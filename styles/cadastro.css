@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
+/*
+chamar fonte poppins 
+    font-family: 'Poppins', sans-serif;
+*/
+
+body {
+    margin: 0;
+    height: 100vh;
+
+}
+
+main {
+    background-color: #FFF;
+}
+
+/*@media screen and (min-width: 1451px) {*/
+#lateral {
+    background-color: #6160B8;
+    width: 30%;
+    float: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.poppins {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    color: #FFF;
+}
+
+#vc-possui {
+    font-weight: 600;
+    /*semibold*/
+    font-size: 48px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+#login {
+    font-weight: 300;
+    /*light*/
+    font-size: 24px;
+    text-align: left;
+    margin-top: 80px;
+    margin-left: 9%;
+}
+
+#entrar {
+    font-weight: 600;
+    /*semibold*/
+    font-size: 35px;
+    margin-left: 15%;
+    margin-right: 15%;
+    border-color: #FFF;
+    border-width: 4px;
+    background-color: #6160B8;
+    border-radius: 40px;
+    position: relative;
+    top: 48%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    /*}*/
+}
+
+#subtitle{
+    font-family: 'Poppins', sans-serif; /*Bold*/
+    text-align: center;
+    color: #6160B8;
+    font-weight: bold;
+    font-size: 50px;
+    padding-top: 60px;
+    padding-bottom: 0;
+    margin-top: 0;
+
+}
+
+#fields{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+}
+
+.campos{
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #eee;
+    border-color: #000;
+    border-radius: 23px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+#limpar{
+    font-weight: 600;
+    /*semibold*/
+    font-size: 35px;
+    border-color: #FFF;
+    border-width: 4px;
+    background-color: #6160B8;
+    border-radius: 40px;
+    position: relative;
+    top: 48%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    float: left;
+}
+
+#cadastrar{
+    font-weight: 600;
+    /*semibold*/
+    font-size: 35px;
+    border-color: #FFF;
+    border-width: 4px;
+    background-color: #6160B8;
+    border-radius: 40px;
+    position: relative;
+    top: 48%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+}
+
+#buttons{
+    display: grid;
+    grid-row: 2;
+    justify-content: space-around;
+}
