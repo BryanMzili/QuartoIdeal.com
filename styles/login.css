@@ -25,12 +25,16 @@ body {
         justify-content: center;
     }
 
+    #senha{
+        margin-top: 40px;
+    }
+
     .campos {
         font-family: 'Inter', sans-serif;
         font-weight: 400;
-        font-size: 90%;
-        margin-left: 35%;
-        margin-right: 35%;
+        font-size: 95%;
+        margin-left: 37%;
+        margin-right: 37%;
         margin-top: 20px;
         background-color: #eee;
         border:solid 1px #000;
@@ -41,4 +45,52 @@ body {
         padding-right: 20px;
     }
 
+    #buttons {
+        margin-top: 6%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 8%;
+    }
+
+    #voltar {
+        float: left;
+        margin-left: 71%;
+        
+    }
+
+    .poppins {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        color: #FFF;
+    }
+
+    #login {
+        margin-right: 71%;
+    }
+
+    .button-styled{
+        border-radius: 40px;
+        
+        border: none;
+        font-size: 130%;
+        background-color: #6160B8;
+        font-weight: 600;
+        /*semibold*/
+        border:solid 4px #FFF;
+        border: none;
+
+
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    #forgot-password{
+        color: #6160B8;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 600;
+        margin-top: 50px;
+
+    }
 }

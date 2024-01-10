@@ -30,3 +30,7 @@ function limpar(){
     document.querySelector("#email").value = "";
     document.querySelector("#telefone").value = "";
 }
+
+function Login(){
+    window.location.href = "login.html";
+}

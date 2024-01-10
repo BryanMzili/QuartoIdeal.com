@@ -14,10 +14,16 @@
     <p id="subtitle">Preencha os campos para<br>acessar sua conta</p>
 
     <div id="fields">
-        <input type="text" name="nome" id="nome" class="campos" placeholder="Nome Completo">
-        <input type="password" name="cpf" id="cpf" class="campos" placeholder="CPF xxx.xxx.xxx-xx">
+        <input type="text" name="usuario" id="usuario" class="campos" placeholder="Usuário">
+        <input type="password" name="senha" id="senha" class="campos" placeholder="Senha">
     </div>
 
+    <div id="buttons">
+        <button class="poppins button-styled" type="button" id="voltar" onclick="telaCadastro()">VOLTAR</button>
+        <button class="poppins button-styled" type="submit" id="login" onclick="login()">LOGIN</button>
+    </div>
+
+    <p id="forgot-password" class="poppins">Esqueci minha senha</p>
 
 </body>
 

@@ -10,6 +10,7 @@ chamar fonte inter
 body {
     margin: 0;
     height: 100vh;
+    overflow: hidden;
 }
 
 main {
@@ -54,8 +55,7 @@ main {
     font-size: 35px;
     margin-left: 15%;
     margin-right: 15%;
-    border-color: #FFF;
-    border-width: 4px;
+    border:solid 4px #FFF;
     background-color: #6160B8;
     border-radius: 40px;
     position: relative;
@@ -92,7 +92,7 @@ main {
     margin-left: 15%;
     margin-right: 15%;
     background-color: #eee;
-    border-color: #000;
+    border:solid 1px #000;
     border-radius: 23px;
     padding-top: 15px;
     padding-bottom: 15px;
