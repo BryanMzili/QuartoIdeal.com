@@ -3,6 +3,7 @@
 
 body {
     margin: 0;
+    background-color: #ebebeb;
 }
 
 .poppins {
@@ -34,3 +35,62 @@ header {
     margin-right: 80px;
 
 }
+
+.Hotel{
+    background-color: #FFF;
+    height: 450px;
+    width: 350px;
+    border-radius: 10px;
+}
+
+main{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.images-hotel{
+    width: 280px;
+}
+
+.div-image{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+
+}
+
+.description-hotel{
+    margin-left: 35px;
+    font-weight: 400;
+    font-size: 20px;
+
+}
+
+.assesment-location{
+    margin-left: 35px;
+    display: flex;   
+    gap: 10px;
+
+
+}
+
+.hotel-assesment{
+
+    display: inline-block;
+}
+
+.hotel-location{
+    
+    display: inline-block;
+
+}
+
+
+
