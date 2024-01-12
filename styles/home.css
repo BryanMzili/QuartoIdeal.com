@@ -18,9 +18,8 @@ body {
 header {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
-    padding-top: 30px;
+    padding-top: 15px;
     padding-bottom: 20px;
     background-color: #3c3bbc;
 }
@@ -28,11 +27,14 @@ header {
 #links {
     display: flex;
     gap: 30px;
+    
 }
 
 #busca{
     width: 400px;
     margin-right: 80px;
+    font-size: 15px;
+    margin-top: 0px;
 
 }
 
@@ -92,5 +94,7 @@ main{
 
 }
 
-
+#carrinho{
+    width: 25px;
+}
 

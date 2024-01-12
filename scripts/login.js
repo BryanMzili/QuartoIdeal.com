@@ -1,3 +1,3 @@
 function telaCadastro(){
-    window.location.href = "cadastro.html";
+    window.location.href = "home.html";
 }
