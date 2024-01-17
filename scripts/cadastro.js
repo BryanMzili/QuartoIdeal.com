@@ -2,6 +2,14 @@ var lateral = document.querySelector("#lateral");
 
 handleResize();
 
+function atualizarPagina() {
+    // Lógica de atualização aqui
+    location.reload(); // Isso recarregará a página, substitua por sua lógica de atualização se necessário
+}
+
+// Configurar a função para ser chamada a cada 5 segundos (5000 milissegundos)
+setInterval(atualizarPagina, 3000);
+
 function handleResize() {
     var lateral = document.querySelector("#lateral");
     if (screen.height <= 1000) {

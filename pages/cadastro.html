@@ -17,30 +17,34 @@
 
         <p class="poppins" id="login">Clique abaixo para fazer<br>login</p>
 
-        <button class="poppins" onclick="Login()" id="entrar">ENTRAR</button>
     </div>
     <main>
         <p id="subtitle">Faça seu cadastro</p>
 
         <!--Qual será a fonte dos input text???-->
         <div id="fields">
-
             <input type="text" name="nome" id="nome" class="campos" placeholder="Nome Completo">
             <input type="text" name="cpf" id="cpf" class="campos" placeholder="CPF xxx.xxx.xxx-xx">
             <input type="text" name="data nascimento" id="nascimento" class="campos" placeholder="Data de Nascimento">
             <input type="text" name="endereço" id="endereco" class="campos" placeholder="Endereço">
             <input type="text" name="email" id="email" class="campos" placeholder="E-mail">
             <input type="text" name="telefone" id="telefone" class="campos" placeholder="Contato (xx) xxxxx-xxxx">
+        </div>
+    </main>
 
+    <footer>
+
+        <div id="div_btn_entrar">
+            <button class="poppins" onclick="Login()" id="entrar">ENTRAR</button>
         </div>
 
-        <p id="buttons">
+        <div id="buttons">
+            
             <button class="poppins" type="reset" id="limpar" onclick="limpar()">LIMPAR</button>
             <button class="poppins" type="submit" id="cadastrar" onclick="cadastrar()">CADASTRAR</button>
+        </div>
 
-        </p>
-
-    </main>
+    </footer>
 </body>
 
 </html>

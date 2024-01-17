@@ -17,19 +17,25 @@ main {
     background-color: #FFF;
 }
 
-/*@media screen and (min-width: 1451px) {*/
+.poppins {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    color: #FFF;
+}
+
+footer{
+    width: 100%;
+    position: absolute;
+    bottom: 10%;
+    display: flex;
+}
+
 #lateral {
     background-color: #6160B8;
     width: 30%;
     float: left;
     display: flex;
     flex-direction: column;
-}
-
-.poppins {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    color: #FFF;
 }
 
 #vc-possui {
@@ -58,8 +64,7 @@ main {
     border:solid 4px #FFF;
     background-color: #6160B8;
     border-radius: 40px;
-    position: relative;
-    top: 48%;
+    
     padding-top: 2%;
     padding-bottom: 2%;
     /*}*/
@@ -111,8 +116,7 @@ main {
     border-width: 4px;
     background-color: #6160B8;
     border-radius: 40px;
-    position: relative;
-    top: 48%;
+    
     padding-top: 2%;
     padding-bottom: 2%;
     float: left;
@@ -128,8 +132,7 @@ main {
     border-width: 4px;
     background-color: #6160B8;
     border-radius: 40px;
-    position: relative;
-    top: 48%;
+    
     padding-top: 2%;
     padding-bottom: 2%;
     border: none;
@@ -137,9 +140,19 @@ main {
 }
 
 #buttons {
-    margin-top: 7.89%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     gap: 20%;
+}
+
+#div_btn_entrar{
+    width: 30%;
+    
+
+}
+
+@media screen and (min-width: 1920px) {
+
+
 }
