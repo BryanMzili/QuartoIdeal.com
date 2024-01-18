@@ -1,21 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-/*
-chamar fonte poppins 
-    font-family: 'Poppins', sans-serif;
-chamar fonte inter
-    font-family: 'Inter', sans-serif;
-*/
-
-body {
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
-}
-
-main {
-    background-color: #FFF;
-}
 
 .poppins {
     font-family: 'Poppins', sans-serif;
@@ -23,11 +7,15 @@ main {
     color: #FFF;
 }
 
-footer{
-    width: 100%;
-    position: absolute;
-    bottom: 10%;
-    display: flex;
+.inter {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
 }
 
 #lateral {
@@ -36,11 +24,11 @@ footer{
     float: left;
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
 #vc-possui {
     font-weight: 600;
-    /*semibold*/
     font-size: 48px;
     text-align: center;
     margin-top: 60px;
@@ -48,31 +36,13 @@ footer{
 
 #login {
     font-weight: 300;
-    /*light*/
-    font-size: 24px;
-    text-align: left;
-    margin-top: 80px;
-    margin-left: 9%;
 }
 
-#entrar {
-    font-weight: 600;
-    /*semibold*/
-    font-size: 35px;
-    margin-left: 15%;
-    margin-right: 15%;
-    border:solid 4px #FFF;
-    background-color: #6160B8;
-    border-radius: 40px;
-    
-    padding-top: 2%;
-    padding-bottom: 2%;
-    /*}*/
+main {
+    background-color: #FFF;
 }
 
 #subtitle {
-    font-family: 'Poppins', sans-serif;
-    /*Bold*/
     text-align: center;
     color: #6160B8;
     font-weight: bold;
@@ -80,79 +50,101 @@ footer{
     padding-top: 60px;
     padding-bottom: 0;
     margin-top: 0;
-
 }
 
 #fields {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-
 }
 
 .campos {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    margin-left: 15%;
-    margin-right: 15%;
     background-color: #eee;
-    border:solid 1px #000;
+    border: solid 1px #000;
     border-radius: 23px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 25px;
-    margin-top: 20px;
+}
+
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 10%;
+    display: flex;
+}
+
+.buttons {
+    font-weight: 600;
+    background-color: #6160B8;
+}
+
+#entrar {
+    border: solid 3px #FFF;
 }
 
 #limpar {
     border: none;
-    font-weight: 600;
-    /*semibold*/
-    font-size: 35px;
-    border-color: #FFF;
-    border-width: 4px;
-    background-color: #6160B8;
-    border-radius: 40px;
-    
-    padding-top: 2%;
-    padding-bottom: 2%;
-    float: left;
-    margin-left: 20%;
-    
+    place-self: center;
 }
 
 #cadastrar {
-    font-weight: 600;
-    /*semibold*/
-    font-size: 35px;
-    border-color: #FFF;
-    border-width: 4px;
-    background-color: #6160B8;
-    border-radius: 40px;
-    
-    padding-top: 2%;
-    padding-bottom: 2%;
     border: none;
-    margin-right: 20%;
+    place-self: center;
 }
 
-#buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 20%;
-}
+@media screen and (min-width: 1280px) {
+    #vc-possui {
+        font-size: 40px;
+        margin-top: 60px;
+    }
 
-#div_btn_entrar{
-    width: 30%;
-    
+    #login {
+        font-size: 21px;
+        text-align: left;
+        margin-top: 80px;
+        margin-left: 12%;
+    }
 
-}
+    #subtitle {
+        font-size: 40px;
+        padding-top: 60px;
+        padding-bottom: 0;
+        margin-top: 0;
+    }
 
-@media screen and (min-width: 1920px) {
+    #fields {
+        margin-top: 6%;
+    }
 
+    .campos {
+        font-size: 20px;
+        border-radius: 23px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-top: 30px;
+    }
+
+    #div_buttons {
+        width: 70%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    #div_btn_entrar {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .buttons {
+        width: 270px;
+        font-size: 27px;
+        border-radius: 40px;
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
 
 }
