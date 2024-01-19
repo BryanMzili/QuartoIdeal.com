@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+.poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+.inter {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
 
 body {
     margin: 0;
@@ -8,21 +16,49 @@ body {
     overflow: hidden;
 }
 
+#subtitle {
+    text-align: center;
+    font-weight: 600;
+    color: #6160B8;
+}
+
+#fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.campos {
+    background-color: #eee;
+    border:solid 1px #000;
+    border-radius: 20px;
+}
+
+#buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 8%;
+}
+
+.button-styled{
+    border-radius: 40px;
+    border: none;
+    background-color: #6160B8;
+    font-weight: 600;
+    color: #FFF;
+}
+
+#forgot-password{
+    color: #6160B8;
+    text-align: center;
+    font-weight: 600;
+}
+
 @media screen and (min-width: 1280px) {
     #subtitle {
-        text-align: center;
-        font-weight: 600;
-        /*semibold*/
-        font-size: 200%;
-        font-family: 'Poppins', sans-serif;
-        color: #6160B8;
-        padding-top: 20px;
-    }
-
-    #fields {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        font-size: 225%;
+        padding-top: 30px;
     }
 
     #senha{
@@ -30,15 +66,10 @@ body {
     }
 
     .campos {
-        font-family: 'Inter', sans-serif;
-        font-weight: 400;
         font-size: 95%;
-        margin-left: 37%;
-        margin-right: 37%;
-        margin-top: 20px;
-        background-color: #eee;
-        border:solid 1px #000;
-        border-radius: 20px;
+        margin-left: 35%;
+        margin-right: 35%;
+        margin-top: 50px;
         padding-top: 0.8%;
         padding-bottom: 0.8%;
         padding-left: 20px;
@@ -46,51 +77,25 @@ body {
     }
 
     #buttons {
-        margin-top: 6%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        gap: 8%;
+        margin-top: 7%;
     }
 
     #voltar {
-        float: left;
-        margin-left: 71%;
-        
-    }
-
-    .poppins {
-        font-family: 'Poppins', sans-serif;
-        margin: 0;
-        color: #FFF;
+        margin-left: 69%;
     }
 
     #login {
-        margin-right: 71%;
+        margin-right: 69%;
     }
 
     .button-styled{
-        border-radius: 40px;
-        
-        border: none;
-        font-size: 130%;
-        background-color: #6160B8;
-        font-weight: 600;
-        /*semibold*/
-        border:solid 4px #FFF;
-        border: none;
-
-
+        font-size: 23px;
         padding-top: 8px;
         padding-bottom: 8px;
     }
 
     #forgot-password{
-        color: #6160B8;
-        text-align: center;
         font-size: 15px;
-        font-weight: 600;
         margin-top: 50px;
-
     }
 }

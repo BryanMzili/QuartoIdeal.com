@@ -8,21 +8,7 @@ const chave = {};
 
 field_1.addEventListener('keydown', next);
 field_2.addEventListener('keydown', next);
-
 field_2.addEventListener('input', maskCpf);
-
-field_1.value = "Bryan";
-field_2.value = "000.000.000-00";
-verificar();
-field_1.value = "19/03/2007";
-field_2.value = "Dorval";
-verificar();
-field_1.value = "bryan@gmail.com";
-field_2.value = "(51)98992-0000";
-verificar();
-field_1.value = "BryanMzili";
-field_2.value = "Bryan123@";
-
 
 function cadastrar() {
     localStorage.setItem(JSON.stringify(chave), JSON.stringify(pessoa));
@@ -42,7 +28,7 @@ function limpar() {
     field_1.removeEventListener('input', maskDate);
     field_2.removeEventListener('input', maskContact);
     field_1.focus();
-    field_2.setAttribute('type','text');
+    field_2.setAttribute('type', 'text');
     btn_cadastrar.innerHTML = 'CONTINUAR';
 }
 
@@ -61,6 +47,7 @@ function openMessage(text) {
     background.style.flexDirection = 'column';
     background.style.justifyContent = 'center';
     background.style.alignItems = 'center';
+    background.style.color = '#000';
 
     message.style.backgroundColor = '#FFF';
     message.style.width = '50%';
@@ -71,6 +58,7 @@ function openMessage(text) {
     message.setAttribute('class', 'poppins');
     message.style.fontWeight = '600';
     message.innerHTML = text;
+    message.style.color = '#000';
 
     close.style.backgroundColor = '#FFF';
     close.style.width = '40%';
@@ -79,6 +67,7 @@ function openMessage(text) {
     close.style.fontSize = '150%';
     close.style.position = 'relative';
     close.style.left = '200px';
+    close.style.color = '#000';
 
     close.setAttribute('class', 'poppins');
     close.style.fontWeight = '600';
@@ -88,10 +77,10 @@ function openMessage(text) {
     background.appendChild(message);
     document.body.appendChild(background);
 
-    close.focus(); 
-    setTimeout(function(){close.addEventListener('click',fechar)}, 2000);
+    close.focus();
+    setTimeout(function () { close.addEventListener('click', fechar) }, 2000);
 
-    function fechar(event){
+    function fechar(event) {
         background.remove();
     }
 }
@@ -303,7 +292,7 @@ function case_2() {
         field_1.focus();
         field_2.removeEventListener('input', maskContact);
         openMessage('Falta pouco para a conclusão do seu cadastro!!!<br><br>Para finalizarmos é necessário que você nos informe um usuário e senha que será utilizado para você acessar a sua conta dentro do nosso site.<br><br>');
-        field_2.setAttribute('type','password');
+        field_2.setAttribute('type', 'password');
         btn_cadastrar.innerHTML = 'CADASTRAR';
     }
 }
@@ -322,6 +311,6 @@ function case_3() {
         limpar();
         openMessage('Cadastro finalizado!!!<br>Você será redirecionado para a tela de Login');
         cadastrar();
-        setTimeout(function(event){window.location.href = "login.html"}, 3000);
+        setTimeout(function (event) { window.location.href = "login.html" }, 3000);
     }
 }
