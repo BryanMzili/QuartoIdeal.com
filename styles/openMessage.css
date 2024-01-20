@@ -1,0 +1,44 @@
+.background-message {
+    background-color: rgb(128, 128, 128, 0.6);
+    width: 200vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #000;
+}
+
+.message {
+    background-color: #FFF;
+    font-weight: 600;
+    color: #000;
+}
+
+.close-message {
+    background-color: #FFF;
+    position: relative;
+    font-weight: 600;
+    color: #000;
+}
+
+@media screen and (min-width: 1280px) {
+    .close-message {
+        width: 40%;
+        height: 25%;
+        border-radius: 30px;
+        left: 200px;
+        font-size: 150%;
+    }
+
+    .message {
+        border-radius: 30px;
+        width: 50%;
+        height: 43%;
+        padding: 2%;
+        font-size: 160%;
+    }
+}

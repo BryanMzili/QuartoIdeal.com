@@ -10,79 +10,37 @@ field_1.addEventListener('keydown', next);
 field_2.addEventListener('keydown', next);
 field_2.addEventListener('input', maskCpf);
 
+// field_1.value = 'Bryan';
+// field_2.value = '000.000.000-00';
+// verificar();
+// field_1.value = '19/03/2000';
+// field_2.value = 'Endereço';
+// verificar();
+// field_1.value = 'bryan@gmail.com';
+// field_2.value = '(00)00000-0000';
+// verificar();
+
+ function limpar() {
+    location.reload();
+//     document.querySelector("#field_1").value = "";
+//     document.querySelector("#field_2").value = "";
+//     aux = 0;
+//     field_1.placeholder = 'Nome Completo';
+//     field_2.placeholder = 'CPF xxx.xxx.xxx-xx';
+//     field_2.addEventListener('input', maskCpf);
+//     field_1.removeEventListener('input', maskDate);
+//     field_2.removeEventListener('input', maskContact);
+//     field_1.focus();
+//     field_2.setAttribute('type', 'text');
+//     btn_cadastrar.innerHTML = 'CONTINUAR';
+}
+
 function cadastrar() {
     localStorage.setItem(JSON.stringify(chave), JSON.stringify(pessoa));
 }
 
 function Login() {
     window.location.href = "login.html";
-}
-
-function limpar() {
-    document.querySelector("#field_1").value = "";
-    document.querySelector("#field_2").value = "";
-    aux = 0;
-    field_1.placeholder = 'Nome Completo';
-    field_2.placeholder = 'CPF xxx.xxx.xxx-xx';
-    field_2.addEventListener('input', maskCpf);
-    field_1.removeEventListener('input', maskDate);
-    field_2.removeEventListener('input', maskContact);
-    field_1.focus();
-    field_2.setAttribute('type', 'text');
-    btn_cadastrar.innerHTML = 'CONTINUAR';
-}
-
-function openMessage(text) {
-    let background = document.createElement('div');
-    let message = document.createElement('div');
-    let close = document.createElement('button');
-
-    background.style.backgroundColor = 'rgb(128, 128, 128,0.6)';
-    background.style.width = '200vh';
-    background.style.height = '100vh';
-    background.style.position = 'absolute';
-    background.style.top = 0;
-    background.style.right = 0;
-    background.style.display = 'flex';
-    background.style.flexDirection = 'column';
-    background.style.justifyContent = 'center';
-    background.style.alignItems = 'center';
-    background.style.color = '#000';
-
-    message.style.backgroundColor = '#FFF';
-    message.style.width = '50%';
-    message.style.height = '43%';
-    message.style.borderRadius = '30px';
-    message.style.fontSize = '160%';
-    message.style.padding = '2%';
-    message.setAttribute('class', 'poppins');
-    message.style.fontWeight = '600';
-    message.innerHTML = text;
-    message.style.color = '#000';
-
-    close.style.backgroundColor = '#FFF';
-    close.style.width = '40%';
-    close.style.height = '25%';
-    close.style.borderRadius = '30px';
-    close.style.fontSize = '150%';
-    close.style.position = 'relative';
-    close.style.left = '200px';
-    close.style.color = '#000';
-
-    close.setAttribute('class', 'poppins');
-    close.style.fontWeight = '600';
-    close.innerHTML = 'OK';
-
-    message.appendChild(close);
-    background.appendChild(message);
-    document.body.appendChild(background);
-
-    close.focus();
-    setTimeout(function () { close.addEventListener('click', fechar) }, 2000);
-
-    function fechar(event) {
-        background.remove();
-    }
 }
 
 function verificar() {
@@ -100,136 +58,6 @@ function verificar() {
             case_3();
             break;
 
-    }
-}
-
-function validarSenha(senha) {
-    if (senha.length < 8) {
-        return false;
-    }
-
-    if (!/[A-Z]/.test(senha)) {
-        return false;
-    }
-
-    if (!/[a-z]/.test(senha)) {
-        return false;
-    }
-
-    if (!/\d/.test(senha)) {
-        return false;
-    }
-
-    if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(senha)) {
-        return false;
-    }
-
-    return true;
-}
-
-function isEmail(email) {
-    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-}
-
-function dataValida(text) {
-    if (text.length < 10) {
-        return false;
-    }
-
-    let data = new Date(formatarData(text));
-    data.setHours(data.getHours() + 3);
-
-    if (data == 'Invalid Date') {
-        return false;
-    }
-
-    if (new Date() < data) {
-        return false;
-    }
-
-    if (new Date('1920-01-01') > data) {
-        return false;
-    }
-
-    return true;
-}
-
-function formatarData(input) {
-    const partes = input.split('/');
-    const dataFormatada = partes.reverse().join('-');
-    return dataFormatada;
-}
-
-function maskCpf(event) {
-    let inputValue = event.target.value.replace(/\D/g, '');
-
-    if (inputValue.length > 11) {
-        inputValue = inputValue.slice(0, 11);
-    }
-
-    let maskedValue = '';
-    for (let i = 0; i < inputValue.length; i++) {
-        if (i === 3 || i === 6) {
-            maskedValue += '.';
-        } else if (i === 9) {
-            maskedValue += '-';
-        }
-        maskedValue += inputValue[i];
-    }
-
-    event.target.value = maskedValue;
-}
-
-function maskDate(event) {
-    let inputValue = event.target.value.replace(/\D/g, '');
-
-    if (inputValue.length > 8) {
-        inputValue = inputValue.slice(0, 8);
-    }
-
-    let maskedValue = '';
-    for (let i = 0; i < inputValue.length; i++) {
-        if (i === 2 || i === 4) {
-            maskedValue += '/';
-        }
-        maskedValue += inputValue[i];
-    }
-
-    event.target.value = maskedValue;
-}
-
-function maskContact(event) {
-    let inputValue = event.target.value.replace(/\D/g, '');
-
-    if (inputValue.length > 11) {
-        inputValue = inputValue.slice(0, 11);
-    }
-
-    let maskedValue = '';
-    for (let i = 0; i < inputValue.length; i++) {
-        if (i === 0) {
-            maskedValue += '(';
-        } else if (i === 2) {
-            maskedValue += ')';//(51)98992-5520
-        } else if (i === 7) {
-            maskedValue += '-';
-        }
-        maskedValue += inputValue[i];
-    }
-
-    event.target.value = maskedValue;
-}
-
-function next(event) {
-    if (event.key == 'Enter') {
-        if (event.target.id == 'field_1') {
-            field_2.focus();
-        }
-
-        if (event.target.id == 'field_2') {
-            verificar();
-        }
     }
 }
 
