@@ -1,10 +1,10 @@
-function openMessage(text) {
-    let background = document.createElement('div');
-    let message = document.createElement('div');
-    let close = document.createElement('button');
+let background = document.createElement('div');
+let message = document.createElement('div');
+let close = document.createElement('button');
 
+function openMessage(text) {
     background.classList.add('background-message');
-    
+
     message.classList.add('poppins');
     message.classList.add('message');
     message.innerHTML = text;
@@ -18,9 +18,38 @@ function openMessage(text) {
     document.body.appendChild(background);
 
     close.focus();
-    setTimeout(function () { close.addEventListener('click', fechar) }, 2000);
 
-    function fechar(event) {
-        background.remove();
+    close.removeEventListener('click', fechar);
+    close.removeEventListener('keydown', fechar);
+
+    close.removeEventListener('click', login);
+    close.removeEventListener('keydown', login);
+
+    close.removeEventListener('click', telaCadastro);
+    close.removeEventListener('keydown', telaCadastro);
+
+    let count = text.length;
+
+    if (count == 196 || count == 52 || count == 33) {
+        close.addEventListener('click', fechar);
+        close.addEventListener('keydown', fechar);
+    } else if (count == 74) {
+        close.addEventListener('click', login);
+        close.addEventListener('keydown', login);
+    }else if(count == 27){
+        close.addEventListener('click', telaCadastro);
+        close.addEventListener('keydown', telaCadastro);
     }
+}
+
+function fechar(event) {
+    background.remove();
+}
+
+function login() {
+    window.location.href = "login.html";
+}
+
+function telaCadastro() {
+    window.location.href = "../";
 }

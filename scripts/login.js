@@ -1,11 +1,13 @@
-function telaCadastro() {
-    window.location.href = "../";
-}
+let usuario = document.querySelector("#usuario");
+let senha = document.querySelector("#senha");
+let btn_forgot = document.querySelector('#forgot-password');
+
+btn_forgot.addEventListener('click', forgotPassword);
+
+// usuario.value = 'bryan';
+// senha.value = 'Bryan123@';
 
 function login() {
-    var usuario = document.querySelector("#usuario");
-    var senha = document.querySelector("#senha");
-
     const chave = {};
     chave.usuario = usuario.value;
     chave.senha = senha.value;
@@ -13,19 +15,18 @@ function login() {
     const pessoa = localStorage.getItem(JSON.stringify(chave));
 
     if (pessoa != null) {
-        var token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        let token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         sessionStorage.setItem('token', token);
-
-        openMessage('Login feito com sucesso');
-        setTimeout(function (event) { window.location.href = "../" }, 3000);
-    }else{
-        openMessage('Usuário ou senha incorreto(s)');
+        openMessage('<br>Login feito com sucesso');
+    } else {
+        openMessage('<br>Usuário ou senha incorreto(s)');
     }
 }
 
-var btn_forgot = document.querySelector('#forgot-password');
-btn_forgot.addEventListener('click', forgotPassword);
+function telaCadastro() {
+    window.location.href = "../";
+}
 
 function forgotPassword() {
-    alert('Esta Funcionalidade está indisponível no momento.');
+    openMessage('Esta Funcionalidade está<br>indisponível no momento.');
 }

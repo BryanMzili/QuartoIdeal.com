@@ -1,25 +1,31 @@
-function validarSenha(senha) {
+function validarSenha(field,msg_field) {
+    let senha = field.value;
+
+    if(vazio(field,msg_field,'Senha')){
+        return -1;
+    }
+
     if (senha.length < 8) {
-        return false;
+        return 0;
     }
 
     if (!/[A-Z]/.test(senha)) {
-        return false;
+        return 0;
     }
 
     if (!/[a-z]/.test(senha)) {
-        return false;
+        return 0;
     }
 
     if (!/\d/.test(senha)) {
-        return false;
+        return 0;
     }
 
     if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(senha)) {
-        return false;
+        return 0;
     }
 
-    return true;
+    return 1;
 }
 
 function dataValida(text) {
@@ -45,9 +51,20 @@ function dataValida(text) {
     return true;
 }
 
-function isEmail(email) {
+function isEmail(field,msg_field) {
     var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
+
+    if(vazio(field,msg_field,'E-mail')){
+        return false;
+    }
+
+    if (!regex.test(field.value)) {
+        msg_field.textContent = 'E-mail inválido';
+        msgErro(field);
+        field.addEventListener('input', removeMsg);
+    }
+
+    return regex.test(field.value);
 }
 
 function formatarData(input) {

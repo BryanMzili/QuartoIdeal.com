@@ -10,6 +10,7 @@
     <Script src="../scripts/masksCadastro.js" ></Script>
     <Script src="../scripts/openMessage.js" ></Script>
     <Script src="../scripts/validacoesCadastro.js"></Script>
+    <Script src="../scripts/mensagensErro.js"></Script>
     <meta name="author" content="Bryan Lemes">
     <title>Cadastro de usuário</title>
 </head>
@@ -26,9 +27,10 @@
 
         <div id="fields">
             <input type="text" name="field_1" id="field_1" class="campos inter" placeholder="Nome Completo">
-            <!-- <span></span> -->
+            <span id="msg_field1" class="msg_erro inter"></span>
             <input type="text" name="field_2" id="field_2" class="campos inter" placeholder="CPF xxx.xxx.xxx-xx">
-            <!-- <span></span> -->
+            <span id="msg_field2" class="msg_erro inter"></span>
+            <p id="state" class="inter">Etapa </p>
         </div>
     </main>
 

@@ -58,6 +58,16 @@ main {
     justify-content: center;
 }
 
+.msg_erro{
+    color: #F00; 
+    margin-left: 21%;
+}
+
+#state{
+    font-weight: 600;
+    color: #6160B8;
+}
+
 .campos {
     background-color: #eee;
     border: solid 1px #000;
@@ -112,6 +122,11 @@ footer {
 
     #fields {
         margin-top: 6%;
+    }
+
+    #state{
+        text-align: right;
+        margin-right: 21%;
     }
 
     .campos {
