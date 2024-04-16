@@ -3,6 +3,7 @@ let message = document.createElement('div');
 let close = document.createElement('button');
 
 function openMessage(text) {
+    $('body').css('overflow', 'hidden');
     background.classList.add('background-message');
 
     message.classList.add('poppins');
@@ -44,6 +45,7 @@ function openMessage(text) {
 
 function fechar(event) {
     background.remove();
+    $('body').css('overflow', 'visible');
 }
 
 function login() {

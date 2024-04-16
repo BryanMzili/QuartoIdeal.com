@@ -1,27 +1,11 @@
-function validarSenha(field,msg_field) {
+function validarSenha(field, msg_field) {
     let senha = field.value;
 
-    if(vazio(field,msg_field,'Senha')){
+    if (vazio(field, msg_field, 'Senha')) {
         return -1;
     }
 
     if (senha.length < 8) {
-        return 0;
-    }
-
-    if (!/[A-Z]/.test(senha)) {
-        return 0;
-    }
-
-    if (!/[a-z]/.test(senha)) {
-        return 0;
-    }
-
-    if (!/\d/.test(senha)) {
-        return 0;
-    }
-
-    if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(senha)) {
         return 0;
     }
 
@@ -51,10 +35,10 @@ function dataValida(text) {
     return true;
 }
 
-function isEmail(field,msg_field) {
+function isEmail(field, msg_field) {
     var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if(vazio(field,msg_field,'E-mail')){
+    if (vazio(field, msg_field, 'E-mail')) {
         return false;
     }
 

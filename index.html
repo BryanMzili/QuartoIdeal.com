@@ -4,9 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <Script src="index.js" defer></Script>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/barraLateral.css">
+    <Script src="scripts/index.js" defer></Script>
+    <Script src="scripts/barraLateral.js"></Script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <meta name="author" content="Bryan Lemes">
+    <link rel="shortcut icon" href="icones/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Quarto Ideal Hotéis</title>
 </head>
 
@@ -15,86 +20,25 @@
         <input type="text" class="poppins" id="busca" placeholder="Buscar Hotéis">
 
         <div id="links">
-            <a class="inter" href="pages/cadastro.html">Crie a sua conta</a>
-            <a class="inter" href="pages/login.html">Entre</a>
-            <a class="inter">Compras</a>
+            <a class="inter" id="cadastro" href="pages/cadastro.html">Crie a sua conta</a>
+            <a class="inter" id="login" href="pages/login.html">Entre</a>
+            <a class="inter" id="compras">Compras</a>
             <img src="icones/carrinho.svg" id="carrinho" alt="carrinho">
         </div>
+
+        <i class="bi bi-list"></i>
     </header>
 
     <main>
-
-        <!--Critério avaliação dos Hoteis:
-            0 - 2.9 - Muito Ruim
-            3 - 5.9 - Ruim
-            6 - 7.9 - Bom
-            8 - 8.9 - Muito Bom
-            9 - 10  - Excelente
-        -->
-        <div class="Hoteis">
-            <div class="Hotel">
-                <img class="images-hotel" src="images/sereno_vista.jpg" alt="image-hotel">
-                <p class="description-hotel inter">Hotel Sereno Vista</p>
-                <div class="assesment-location">
-                    <div class="hotel-assesment inter"><b>8.9 - Muito Bom (1500)</b></div>
-                    <img src="icones/localizacao.svg" id="localizacao" alt="localizacao">
-                    <div class="hotel-location inter">São Paulo</div>
-                </div>
-            </div>
-
-            <div class="Hotel">
-                <img class="images-hotel" src="images/saphirine.jpg" alt="image-hotel">
-                <p class="description-hotel inter">The Sapphire Retreat</p>
-                <div class="assesment-location">
-                    <div class="hotel-assesment inter"><b>7.6 - Bom (364)</b></div>
-                    <img src="icones/localizacao.svg" id="localizacao" alt="localizacao">
-                    <div class="hotel-location inter">Espírito Santo</div>
-                </div>
-            </div>
-
-            <div class="Hotel">
-                <img class="images-hotel" src="images/tranquil.jpg" alt="image-hotel">
-                <p class="description-hotel inter">Tranquil Haven</p>
-                <div class="assesment-location">
-                    <div class="hotel-assesment inter"><b>6.5 - Bom (783)</b></div>
-                    <img src="icones/localizacao.svg" id="localizacao" alt="localizacao">
-                    <div class="hotel-location inter">Mato Grosso do Sul</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="Hoteis">
-            <div class="Hotel">
-                <img class="images-hotel" src="images/oasis_hotel.jpg" alt="image-hotel">
-                <p class="description-hotel inter">Oasis Grand Hotel</p>
-                <div class="assesment-location">
-                    <div class="hotel-assesment inter"><b>8.0 - Muito Bom (1204)</b></div>
-                    <img src="icones/localizacao.svg" id="localizacao" alt="localizacao">
-                    <div class="hotel-location inter">Pará</div>
-                </div>
-            </div>
-
-            <div class="Hotel">
-                <img class="images-hotel" src="images/celestial.jpg" alt="image-hotel">
-                <p class="description-hotel inter">Celestial Mirage Resort</p>
-                <div class="assesment-location">
-                    <div class="hotel-assesment inter"><b>7.8 - Bom (968)</b></div>
-                    <img src="icones/localizacao.svg" id="localizacao" alt="localizacao">
-                    <div class="hotel-location inter">Paraná</div>
-                </div>
-            </div>
-
-            <div class="Hotel">
-                <img class="images-hotel" src="images/aurora.jpg" alt="image-hotel">
-                <p class="description-hotel inter">Hotel Aurora Palace</p>
-                <div class="assesment-location">
-                    <div class="hotel-assesment inter"><b>9.5 - Excelente (1756)</b></div>
-                    <img src="icones/localizacao.svg" id="localizacao" alt="localizacao">
-                    <div class="hotel-location inter">Santa Catarina</div>
-                </div>
-            </div>
-        </div>
+        <div class="Hoteis"></div>
     </main>
+    <footer>
+        <span class="poppins" id='registered'></span>
+        <i class="fa-regular fa-registered" style="color: #ffffff; font-size: 20px; padding: 0;"></i>
+    </footer>
+
+    <div class="lista" id="lista">
+    </div>
 </body>
 
 </html>

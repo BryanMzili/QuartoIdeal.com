@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="../styles/cadastro.css">
     <link rel="stylesheet" href="../styles/openMessage.css">
     <Script src="../scripts/cadastro.js" defer></Script>
-    <Script src="../scripts/masksCadastro.js" ></Script>
-    <Script src="../scripts/openMessage.js" ></Script>
+    <Script src="../scripts/masksCadastro.js"></Script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+    <Script src="../scripts/etapas.js"></Script>
+    <Script src="../scripts/openMessage.js"></Script>
     <Script src="../scripts/validacoesCadastro.js"></Script>
     <Script src="../scripts/mensagensErro.js"></Script>
+    <Script src="../scripts/viewPassword.js"></Script>
     <meta name="author" content="Bryan Lemes">
+    <link rel="shortcut icon" href="../icones/favicon.ico" type="image/x-icon">
     <title>Cadastro de usuário</title>
 </head>
 
@@ -26,10 +31,16 @@
         <p id="subtitle" class="poppins">Faça seu cadastro</p>
 
         <div id="fields">
-            <input type="text" name="field_1" id="field_1" class="campos inter" placeholder="Nome Completo">
+            <span id="msg_field3" class="msg_date inter">Data de Nascimento</span>
+            <input type="text" name="field_1" id="field_1" class="campos inter top" placeholder="Nome Completo">
             <span id="msg_field1" class="msg_erro inter"></span>
-            <input type="text" name="field_2" id="field_2" class="campos inter" placeholder="CPF xxx.xxx.xxx-xx">
+
+            <div class="passField">
+                <input type="text" name="field_2" id="field_2" class="campos inter" placeholder="CPF xxx.xxx.xxx-xx">
+                <img id="iconView">
+            </div>
             <span id="msg_field2" class="msg_erro inter"></span>
+
             <p id="state" class="inter">Etapa </p>
         </div>
     </main>
@@ -40,10 +51,14 @@
         </div>
 
         <div id="div_buttons">
-            <button class="poppins buttons" type="reset" id="limpar" onclick="limpar()">LIMPAR</button>
+            <button class="poppins buttons" type="reset" id="limpar" onclick="voltar()">VOLTAR</button>
             <button class="poppins buttons" type="submit" id="cadastrar" onclick="verificar()">CONTINUAR</button>
         </div>
     </footer>
+
+    <div id="login_mobile">
+
+    </div>
 </body>
 
 </html>

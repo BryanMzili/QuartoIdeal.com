@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.poppins {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+.inter {
+    font-family: 'Inter', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    color: #FFF;
+    cursor: pointer;
+}
+
+a:hover {
+    background-color: #7674bd;
+    transition: ease 0.6s;
+    border-radius: 10px;
+}
+
+body {
+    margin: 0;
+    background-color: #e3e3e3;
+}
+
+header {
+    background-color: #6160B8;
+}
+
+.Hoteis {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#links {
+    display: flex;
+    align-items: center;
+}
+
+#carrinho {
+    color: #FFF;
+    cursor: pointer;
+    transition: width 1s;
+}
+
+#carrinho:hover {
+    background-color: #7674bd;
+    transition: ease 0.6s;
+    border-radius: 10px;
+}
+
+.Hotel {
+    background-color: #FFF;
+}
+
+.Hotel:hover {
+    cursor: pointer;
+    box-shadow: 0 0 30px #6160B8;
+    transform: scale(1.05);
+    transition: transform ease 0.5s;
+}
+
+.images-hotel {
+    margin-top: 0;
+    width: 100%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.description-hotel {
+    font-weight: 400;
+}
+
+.hotel-location {
+    display: inline-block;
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    background-color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#registered {
+    cursor: pointer;
+    font-size: 1.3em;
+    font-weight: 600
+}
+
+.bi {
+    cursor: pointer;
+}
+
+.bi:hover {
+    background-color: #7674bd;
+    transition: ease 0.6s;
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 0px) {
+    header {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    a {
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 0.8em;
+    }
+
+    #busca {
+        margin-right: 0px;
+        font-size: 0.98em;
+        margin-top: 0px;
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 1px;
+        padding-bottom: 2px;
+        border: solid 1.5px #000;
+    }
+
+    #links {
+        gap: 20px;
+    }
+
+    .bi {
+        display: block;
+        font-size: 2em;
+    }
+
+    #carrinho {
+        width: 40px;
+        padding-left: 5px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .Hoteis {
+        margin-top: 40px;
+    }
+
+    .Hotel {
+        height: 270px;
+        width: 250px;
+        font-size: 0.8125em;
+        margin-bottom: 60px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+        border-radius: 30px;
+    }
+
+    .description-hotel {
+        margin-left: 15px;
+        margin-bottom: 12px;
+        font-size: 1.125em;
+    }
+
+    .hotel-assesment {
+        margin-left: 5px;
+    }
+
+    .assesment-location {
+        margin-left: 10px;
+        gap: 10px;
+    }
+
+    #localizacao {
+        width: 20px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .Hotel {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    a {
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 1em;
+    }
+
+    .bi {
+        display: none;
+    }
+
+    header {
+        padding-top: 20px;
+        padding-bottom: 25px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    main {
+        margin-top: 5%;
+    }
+
+    .Hoteis {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    #busca {
+        width: 400px;
+        margin-right: 80px;
+        font-size: 1.125em;
+        margin-top: 0px;
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    #links {
+        gap: 30px;
+    }
+
+    #carrinho {
+        width: 25px;
+        padding-left: 5px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .Hotel {
+        height: 280px;
+        width: 250px;
+        font-size: 0.8125em;
+        margin-bottom: 60px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+        border-radius: 30px;
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+
+    .description-hotel {
+        margin-left: 20px;
+        margin-bottom: 12px;
+        font-size: 1.125em;
+    }
+
+    .hotel-assesment {
+        margin-left: 5px;
+    }
+
+    .assesment-location {
+        margin-left: 15px;
+        gap: 10px;
+    }
+
+    #localizacao {
+        width: 20px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .Hoteis {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .Hotel {
+        height: 330px;
+        width: 300px;
+        font-size: 0.90625em;
+    }
+
+    .description-hotel {
+        margin-left: 25px;
+        margin-bottom: 18;
+        font-size: 1.25em;
+    }
+
+    .assesment-location {
+        margin-left: 20px;
+    }
+
+    #localizacao {
+        width: 25px;
+    }
+
+}
+
+.fa-registered:before {
+    content: "\f25d"
+}
+
+.fa-regular {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: var(--fa-display, inline-block);
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+@font-face {
+    font-family: "Font Awesome 6 Free";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url(fonts/fa-regular-400.woff2) format("woff2"), url(fonts/fa-regular-400.ttf) format("truetype")
+}

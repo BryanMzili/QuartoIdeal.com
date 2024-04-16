@@ -22,7 +22,7 @@ function removeMsg(event){
     }
 }
 
-function msgErro(field,){
+function msgErro(field){
     field.style.border = 'solid 2px #F00';
     field.style.color = '#F00';
 }

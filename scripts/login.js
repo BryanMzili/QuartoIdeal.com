@@ -6,6 +6,7 @@ btn_forgot.addEventListener('click', forgotPassword);
 
 // usuario.value = 'bryan';
 // senha.value = 'Bryan123@';
+// login();
 
 function login() {
     const chave = {};
@@ -22,6 +23,11 @@ function login() {
         openMessage('<br>Usuário ou senha incorreto(s)');
     }
 }
+
+$('form').submit(function(event){
+    event.preventDefault();
+    login();
+});
 
 function telaCadastro() {
     window.location.href = "../";

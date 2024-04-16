@@ -1,7 +1,5 @@
 .background-message {
     background-color: rgb(128, 128, 128, 0.6);
-    width: 200vh;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,20 +29,53 @@
     border: solid 2px #000;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 0px) {
+    .background-message {
+        width: 100%;
+        height: 100%;
+    }
+
+    .message {
+        border-radius: 20px;
+        width: 80%;
+        height: 280px;
+        padding: 4%;
+        font-size: 1em;
+    }
+
     .close-message {
-        width: 40%;
-        height: 25%;
-        border-radius: 30px;        
+        width: 60%;
+        height: 20%;
+        border-radius: 30px;
         font-size: 150%;
         bottom: 30px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .message {
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .background-message {
+        height: 100vh;
     }
 
     .message {
         border-radius: 30px;
         width: 50%;
-        height: 43%;
+        height: 50%;
         padding: 2%;
-        font-size: 160%;        
+        font-size: 160%;
+    }
+
+    .close-message {
+        width: 40%;
+        height: 25%;
+        border-radius: 30px;
+        font-size: 150%;
+        bottom: 30px;
     }
 }
