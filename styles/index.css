@@ -276,10 +276,38 @@ footer {
     }
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1420px) {
     .Hoteis {
         margin-left: 20%;
         margin-right: 20%;
+    }
+}
+
+@media screen and (min-width: 1420px) {
+    .Hoteis {
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .Hoteis {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+
+@media screen and (min-width: 1660px) {
+    .Hoteis {
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .Hoteis {
+        margin-left: 25%;
+        margin-right: 25%;
     }
 
     .Hotel {
@@ -301,32 +329,4 @@ footer {
     #localizacao {
         width: 25px;
     }
-
-}
-
-.fa-registered:before {
-    content: "\f25d"
-}
-
-.fa-regular {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    display: var(--fa-display, inline-block);
-    font-style: normal;
-    font-variant: normal;
-    line-height: 1;
-    text-rendering: auto;
-    font-family: "Font Awesome 6 Free";
-    font-weight: 400;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-
-@font-face {
-    font-family: "Font Awesome 6 Free";
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url(fonts/fa-regular-400.woff2) format("woff2"), url(fonts/fa-regular-400.ttf) format("truetype")
 }

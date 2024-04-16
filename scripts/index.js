@@ -6,7 +6,10 @@ function abrirCarrinho() {
 }
 
 function abrirHotel() {
-    window.location.href = 'pages/hotel.html';
+    let id_hotel = $(this).find("#id").val();
+    window.location.href = 'pages/hotel.html?id=' + id_hotel;
+
+    
 }
 
 document.querySelector('#registered').innerHTML = 'QUARTO IDEAL ' + new Date().getFullYear();
@@ -24,6 +27,7 @@ $.getJSON('./hoteis.json', function (data) {
         $.each(value, function (chave, valor) {
             let hotel = '<div class="Hotel">';
 
+            hotel += '<input type="hidden" id="id" value="' + valor.id + '">';
             hotel += '<img class="images-hotel" src="images/' + valor.imagem + '" alt="image-hotel">';
             hotel += '<p class="description-hotel inter">' + valor.nome + '</p>';
             hotel += '<div class="assesment-location">'
@@ -51,10 +55,7 @@ $.getJSON('./hoteis.json', function (data) {
         });
     });
 
-    let hotel = document.querySelectorAll('.Hotel');
-    hotel.forEach(element => {
-        element.addEventListener('click', abrirHotel);
-    });
+    $('.Hotel').click(abrirHotel);
 
 }).fail(function () {
     console.log('Erro ao carregar o arquivo JSON.');

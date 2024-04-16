@@ -1,6 +1,7 @@
 let usuario = document.querySelector("#usuario");
 let senha = document.querySelector("#senha");
 let btn_forgot = document.querySelector('#forgot-password');
+let larguraInicial = $(window).width();
 
 btn_forgot.addEventListener('click', forgotPassword);
 
@@ -36,3 +37,10 @@ function telaCadastro() {
 function forgotPassword() {
     openMessage('Esta Funcionalidade está<br>indisponível no momento.');
 }
+
+$(window).on('resize', function () {
+    let larguraAtual = $(window).width();
+    if (larguraAtual !== larguraInicial) {
+        location.reload();
+    }
+});

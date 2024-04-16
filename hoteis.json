@@ -1,46 +1,58 @@
 {
     "hoteis": [
         {
+            "id": 1,
             "nome": "Hotel Sereno Vista",
             "imagem": "sereno_vista.jpg",
             "nota": 8.9,
             "numAval": 1500,
-            "regiao": "São Paulo"
+            "regiao": "São Paulo",
+            "valor": 250.00
         },
         {
+            "id": 2,
             "nome": "The Sapphire Retreat",
             "imagem": "saphirine.jpg",
             "nota": 7.6,
             "numAval": 364,
-            "regiao": "Espírito Santo"
+            "regiao": "Espírito Santo",
+            "valor": 150.00
         },
         {
+            "id": 3,
             "nome": "Tranquil Haven",
             "imagem": "tranquil.jpg",
             "nota": 6.5,
             "numAval": 783,
-            "regiao": "Mato Grosso do Sul"
+            "regiao": "Mato Grosso do Sul",
+            "valor": 100.00
         },
         {
+            "id": 4,
             "nome": "Oasis Grand Hotel",
             "imagem": "oasis_hotel.jpg",
             "nota": 8.0,
             "numAval": 1204,
-            "regiao": "Pará"
+            "regiao": "Pará",
+            "valor": 200.00
         },
         {
+            "id": 5,
             "nome": "Celestial Mirage Resort",
             "imagem": "celestial.jpg",
             "nota": 7.8,
             "numAval": 968,
-            "regiao": "Paraná"
+            "regiao": "Paraná",
+            "valor": 150.00
         },
         {
+            "id": 6,
             "nome": "Hotel Aurora Palace",
             "imagem": "aurora.jpg",
             "nota": 9.5,
             "numAval": 1756,
-            "regiao": "Santa Catarina"
+            "regiao": "Santa Catarina",
+            "valor": 300.00
         }
     ]
 }
