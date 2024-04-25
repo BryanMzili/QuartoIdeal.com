@@ -1,7 +1,7 @@
 # QuartoIdeal
 
 ## Status Atual do Projeto
-Em planejamento / início de desenvolvimento
+Em desenvolvimento
 
 # Tecnologias
 ## Back-End
