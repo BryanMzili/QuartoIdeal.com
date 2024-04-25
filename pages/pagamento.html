@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/hotel.css">
+    <link rel="stylesheet" href="../styles/fa-registered.css">
+    <link rel="stylesheet" href="../styles/barraLateral.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <Script src="../scripts/hotel.js" defer></Script>
+    <Script src="../scripts/barraLateral.js"></Script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <meta name="author" content="Bryan Lemes">
+    <link rel="shortcut icon" href="../icones/favicon.ico" type="image/x-icon">
+    <title>Pagamento</title>
+</head>
+
+<body>
+    <header>
+        <div id="links">
+            <a class="inter" id="cadastro" href="../index.html">Home</a>
+            <a class="inter" id="cadastro" href="cadastro.html">Crie a sua conta</a>
+            <a class="inter" id="login" href="login.html">Entre</a>
+            <a class="inter" id="compras">Compras</a>
+            <img src="../icones/carrinho.svg" id="carrinho" alt="carrinho" onclick="abrirCarrinho()">
+        </div>
+
+        <i class="bi bi-list"></i>
+    </header>
+
+    <main>
+
+        <p id="title_mobile" class="inter"></p>
+
+        <img src="" alt="Imagem Hotel" id="hotel-image">
+
+        <form action="" method="post">
+            <p id="title" class="inter"></p>
+            <p id="avaliacao" class="inter"></p>
+            <p id="valor" class="inter"></p>
+            <div class="local">
+                <img src="../icones/localizacao.svg" id="localizacao" alt="localizacao">
+                <p id="localidade" class="inter"></p>
+            </div>
+
+            <div class="datas">
+                <label for="data_entrada" id="lbl_data_entrada" class="poppins">Data de Entrada</label>
+                <label for="data_saida" id="lbl_data_saida" class="poppins">Data de Saída</label>
+                <input type="date" name="data_entrada" id="data_entrada" required>
+                <input type="date" name="data_saida" id="data_saida" required>
+            </div>
+
+            <input id="reservar" type="submit" class="inter" value="Reservar">
+            <button id="add-carrinho" class="inter" onclick="addCarrinho()">Adicionar ao Carrinho</button>
+        </form>
+    </main>
+    <footer>
+        <span class="poppins" id='registered'></span>
+        <i class="fa-regular fa-registered" style="color: #000; font-size: 20px; padding: 0;"></i>
+    </footer>
+    <div class="lista" id="lista">
+    </div>
+</body>
+
+</html>

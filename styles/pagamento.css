@@ -1,0 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.poppins {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+.inter {
+    font-family: 'Inter', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    color: #FFF;
+    cursor: pointer;
+}
+
+a:hover {
+    background-color: #7674bd;
+    transition: ease 0.6s;
+    border-radius: 10px;
+}
+
+body {
+    margin: 0;
+    background-color: #e3e3e3;
+}
+
+header {
+    background-color: #6160B8;
+}
+
+#links {
+    display: flex;
+    align-items: center;
+
+}
+
+#carrinho {
+    color: #FFF;
+    cursor: pointer;
+    transition: width 1s;
+}
+
+#carrinho:hover {
+    background-color: #7674bd;
+    transition: ease 0.6s;
+    border-radius: 10px;
+}
+
+.bi {
+    cursor: pointer;
+}
+
+.bi:hover {
+    background-color: #7674bd;
+    transition: ease 0.6s;
+    border-radius: 10px;
+}
+
+main {
+    background-color: #FFF;
+}
+
+main p {
+    margin: 0;
+}
+
+#reservar {
+    background-color: #6160B8;
+    cursor: pointer;
+}
+
+#add-carrinho {
+    border: solid #6160B8 2px;
+    background-color: #FFF;
+    color: #6160B8;
+    cursor: pointer;
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    background-color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#registered {
+    cursor: pointer;
+    font-size: 1.3em;
+    font-weight: 600
+}
+
+@media screen and (min-width: 0px) {
+    header {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        padding-right: 5%;
+    }
+
+    a {
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 0.8em;
+    }
+
+    #links {
+        gap: 20px;
+    }
+
+    .bi {
+        display: block;
+        font-size: 2em;
+    }
+
+    #carrinho {
+        width: 40px;
+        padding-left: 5px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    main {
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 20px;
+        margin-bottom: 5%;
+
+        padding-top: 20px;
+        padding-bottom: 40px;
+        padding-left: 25px;
+        padding-right: 25px;
+
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+    }
+
+    main img {
+        max-width: 250px;
+        margin: auto;
+    }
+
+    #title_mobile {
+        font-size: 1.5em;
+        font-weight: 600;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+
+    #avaliacao {
+        font-size: 1em;
+        margin-top: 10px;
+        margin-left: 12%;
+    }
+
+    #valor {
+        font-size: 1.5em;
+        margin-top: 30px;
+    }
+
+    .local {
+        display: flex;
+        flex-direction: row;
+        gap: 0;
+    }
+
+    #localizacao {
+        margin-left: -1%;
+        width: 20px;
+        margin-right: 0;
+    }
+
+    .datas {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        gap: 20px;
+        row-gap: 0px;
+        margin-top: 0px;
+    }
+
+    .datas label {
+        margin-top: 30px;
+    }
+
+    #reservar {
+        width: 100%;
+        margin-top: 60px;
+        font-size: 1.2em;
+        border-radius: 10px;
+
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    #add-carrinho {
+        width: 100%;
+        margin-top: 40px;
+        font-size: 1.2em;
+        border-radius: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+}
+
+@media screen and (min-width: 700px) {
+    main img {
+        max-width: 400px;
+    }
+
+    #title_mobile {
+        font-size: 2em;
+    }
+
+    #avaliacao {
+        font-size: 1.2em;
+    }
+
+    #valor {
+        font-size: 2em;
+    }
+
+    .datas input[type="date"] {
+        font-size: 1.5em;
+    }
+
+    .datas label {
+        font-size: 1.5em;
+    }
+
+    #reservar {
+        font-size: 2em;
+    }
+
+    #add-carrinho {
+        font-size: 2em;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    a {
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 1em;
+    }
+
+    .bi {
+        display: none;
+    }
+
+    header {
+        padding-top: 20px;
+        padding-bottom: 25px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-right: 0%;
+    }
+
+    #links {
+        gap: 30px;
+    }
+
+    #carrinho {
+        width: 25px;
+        padding-left: 5px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    main {
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 4%;
+        margin-bottom: 5%;
+
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-top: 40px;
+        padding-bottom: 80px;
+
+        display: flex;
+        flex-direction: row;
+        border-radius: 10px;
+    }
+
+    main img {
+        max-width: 700px;
+        margin: auto;
+        margin-right: 0%;
+        margin-left: 5%;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-left: 40px;
+        margin-right: 10px;
+
+        border: 1px #000 solid;
+        border-radius: 20px;
+
+        padding-top: 20px;
+        padding-left: 10px;
+        padding-right: 20px;
+    }
+
+    #title {
+        font-size: 2em;
+        font-weight: 600;
+    }
+
+    #avaliacao {
+        font-size: 0.9em;
+        margin-top: 10px;
+    }
+
+    #valor {
+        font-size: 1.5em;
+        margin-top: 30px;
+    }
+
+    #localizacao {
+        width: 20px;
+    }
+
+    .datas {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 20px;
+        row-gap: 0;
+        margin-top: 40px;
+    }
+
+    .datas label {
+        margin-top: 0px;
+        font-size: 1em;
+    }
+
+
+    .datas input[type="date"] {
+        font-size: 1.2em;
+    }
+
+    #reservar {
+        margin-top: 40px;
+        font-size: 1.3em;
+        border-radius: 10px;
+
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    #add-carrinho {
+        margin-top: 20px;
+        font-size: 1.3em;
+        border-radius: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    main {
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    main {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    form {
+        margin-left: 60px;
+    }
+}
+
+@media screen and (min-width: 1700px) {
+    main {
+        margin-left: 12%;
+        margin-right: 12%;
+    }
+
+    form {
+        margin-left: 80px;
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    form {
+        margin-left: 40px;
+    }
+
+    main {
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-top: 4%;
+        margin-bottom: 5%;
+
+        padding-left: 0px;
+        padding-right: 20px;
+        padding-top: 40px;
+        padding-bottom: 80px;
+
+        display: flex;
+        flex-direction: row;
+        border-radius: 10px;
+    }
+
+    main img {
+        max-width: 700px;
+        margin: auto;
+        margin-right: 0%;
+        margin-left: 40px;
+    }
+
+    #localizacao {
+        width: 25px;
+    }
+
+    a {
+        font-size: 1.3em;
+    }
+
+    footer {
+        font-size: 1.4em;
+    }
+}
