@@ -1,15 +1,12 @@
-document.querySelector('#carrinho').addEventListener('click', abrirCarrinho);
 let larguraInicial = $(window).width();
-
-function abrirCarrinho() {
-    //window.location.href = 'login.html';
-}
 
 function abrirHotel() {
     let id_hotel = $(this).find("#id").val();
     window.location.href = 'pages/hotel.html?id=' + id_hotel;
+}
 
-    
+function abrirCarrinho(){
+    window.location.href = 'pages/carrinho.html';
 }
 
 document.querySelector('#registered').innerHTML = 'QUARTO IDEAL ' + new Date().getFullYear();

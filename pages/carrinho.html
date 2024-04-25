@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/carrinho.css">
+    <link rel="stylesheet" href="../styles/barraLateral.css">
+    <link rel="stylesheet" href="../styles/fa-registered.css">
+    <Script src="../scripts/carrinho.js" defer></Script>
+    <Script src="../scripts/barraLateral.js"></Script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <meta name="author" content="Bryan Lemes">
+    <link rel="shortcut icon" href="../icones/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Carrinho</title>
+</head>
+
+<body>
+    <header>
+        <div id="links">
+            <a class="inter" id="cadastro" href="../index.html">Home</a>
+            <a class="inter" id="cadastro" href="cadastro.html">Crie a sua conta</a>
+            <a class="inter" id="login" href="login.html">Entre</a>
+            <a class="inter" id="compras">Compras</a>
+        </div>
+
+        <i class="bi bi-list"></i>
+    </header>
+
+    <main>
+        <h1 class="poppins">CARRINHO</h1>
+        <div class="reservas"></div>
+        
+        <div class="resumo">
+            <p class="title_resumo poppins">Resumo</p>
+            <hr>
+            <div>
+                <span class="inter">Total</span> <span class="inter" id="total">R$ 0,00</span>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="inter" id="limpar">Limpar Carrinho</button>
+            <button class="inter" id="finalizar">Finalizar Reservas</button>
+        </div>
+    </main>
+    <footer>
+        <span class="poppins" id='registered'></span>
+        <i class="fa-regular fa-registered" style="color: #000; font-size: 20px; padding: 0;"></i>
+    </footer>
+
+    <div class="lista" id="lista">
+    </div>
+</body>
+
+</html>

@@ -23,7 +23,7 @@
             <a class="inter" id="cadastro" href="cadastro.html">Crie a sua conta</a>
             <a class="inter" id="login" href="login.html">Entre</a>
             <a class="inter" id="compras">Compras</a>
-            <img src="../icones/carrinho.svg" id="carrinho" alt="carrinho">
+            <img src="../icones/carrinho.svg" id="carrinho" alt="carrinho" onclick="abrirCarrinho()">
         </div>
 
         <i class="bi bi-list"></i>
@@ -33,35 +33,32 @@
 
         <p id="title_mobile" class="inter"></p>
 
-        <img src="../images/aurora.jpg" alt="Imagem Hotel" id="hotel-image">
+        <img src="" alt="Imagem Hotel" id="hotel-image">
 
         <form action="" method="post">
-            <p id="title" class="inter">Hotel Sereno Vista</p>
-            <p id="avaliacao" class="inter">8.9 - Muito Bom(1500)</p>
-            <p id="valor" class="inter">R$ 200,00 p/d</p>
+            <p id="title" class="inter"></p>
+            <p id="avaliacao" class="inter"></p>
+            <p id="valor" class="inter"></p>
             <div class="local">
                 <img src="../icones/localizacao.svg" id="localizacao" alt="localizacao">
-                <p id="localidade" class="inter">São Paulo</p>
+                <p id="localidade" class="inter"></p>
             </div>
-
-
 
             <div class="datas">
                 <label for="data_entrada" id="lbl_data_entrada" class="poppins">Data de Entrada</label>
                 <label for="data_saida" id="lbl_data_saida" class="poppins">Data de Saída</label>
-                <input type="date" name="data_entrada" id="data_entrada">
-                <input type="date" name="data_saida" id="data_saida">
+                <input type="date" name="data_entrada" id="data_entrada" required>
+                <input type="date" name="data_saida" id="data_saida" required>
             </div>
 
             <input id="reservar" type="submit" class="inter" value="Reservar">
-            <button id="add-carrinho" class="inter">Adicionar ao Carrinho</button>
+            <button id="add-carrinho" class="inter" onclick="addCarrinho()">Adicionar ao Carrinho</button>
         </form>
     </main>
     <footer>
         <span class="poppins" id='registered'></span>
-        <i class="fa-regular fa-registered" style="color: #ffffff; font-size: 20px; padding: 0;"></i>
+        <i class="fa-regular fa-registered" style="color: #000; font-size: 20px; padding: 0;"></i>
     </footer>
-
     <div class="lista" id="lista">
     </div>
 </body>

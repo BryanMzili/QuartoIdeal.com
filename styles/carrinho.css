@@ -1,0 +1,427 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.poppins {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+.inter {
+    font-family: 'Inter', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    color: #FFF;
+    cursor: pointer;
+}
+
+a:hover {
+    background-color: #7674bd;
+    transition: ease 0.6s;
+    border-radius: 10px;
+}
+
+body {
+    margin: 0;
+    background-color: #e3e3e3;
+    color: #FFF;
+}
+
+header {
+    background-color: #6160B8;
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    background-color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+}
+
+#registered {
+    cursor: pointer;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #000;
+}
+
+.bi {
+    cursor: pointer;
+}
+
+.bi:hover {
+    background-color: #7674bd;
+    transition: ease 0.6s;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #000;
+}
+
+.reserva,
+.resumo {
+    background-color: #FFF;
+    color: #000;
+}
+
+.reservaTitle {
+    text-align: center;
+    font-weight: 500;
+}
+
+#finalizar {
+    background-color: #6160B8;
+    border: none;
+}
+
+#limpar {
+    border: solid #6160B8 2px;
+    background-color: #FFF;
+    color: #6160B8;
+    cursor: pointer;
+}
+
+.title_resumo {
+    text-align: center;
+}
+
+@media screen and (min-width: 0px) {
+    header {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        padding-right: 5%;
+    }
+
+    a {
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 0.8em;
+    }
+
+    #links {
+        gap: 20px;
+    }
+
+    .bi {
+        display: block;
+        font-size: 2em;
+    }
+
+    h1 {
+        padding-top: 20px;
+    }
+
+    .reserva {
+        margin-left: 5%;
+        margin-right: 5%;
+        border-radius: 10px;
+        padding-bottom: 10px;
+    }
+
+    .reservaTitle {
+        padding-top: 10px;
+        font-size: 1.3em;
+    }
+
+    .infoReserva {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .infoText {
+        width: 40%;
+    }
+
+    .infoText p {
+        margin: 0;
+    }
+
+    .periodo,
+    .total {
+        font-size: 1.3em;
+    }
+
+    .datasReserva {
+        font-size: 0.8em;
+    }
+
+    .valorReserva {
+        font-size: 1.5em;
+    }
+
+    .images {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    .image_hotel {
+        max-width: 180px;
+        margin: auto;
+    }
+
+    .lixeira {
+        width: 25px;
+        margin-left: 15px;
+        margin-top: 5px;
+        cursor: pointer;
+        border: #000 solid 1px;
+        border-radius: 10px;
+        padding: 2px;
+    }
+
+    button {
+        margin-top: 30px;
+        margin-left: 5%;
+        margin-right: 5%;
+        font-size: 1.3em;
+
+        border-radius: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        cursor: pointer;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #finalizar {
+        font-size: 1.5em;
+        font-weight: 600;
+        padding: 10px;
+        padding-bottom: 13px;
+        border-radius: 8px;
+        border: #000 solid 1px;
+        margin-bottom: 80px;
+    }
+
+    .resumo {
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 50px;
+        border-radius: 10px;
+        padding-bottom: 30px;
+    }
+
+    .title_resumo {
+        font-size: 1.7em;
+        font-weight: 600;
+        padding-top: 5px;
+    }
+
+    .resumo div {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .resumo div span {
+        padding-top: 5px;
+        font-size: 1.3em;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .reservaTitle {
+        padding-top: 15px;
+        font-size: 1.6em;
+    }
+
+    .infoText {
+        width: 45%;
+    }
+
+    .periodo,
+    .total {
+        font-size: 1.5em;
+    }
+
+    .datasReserva {
+        font-size: 1em;
+    }
+
+    .valorReserva {
+        font-size: 1.7em;
+    }
+
+    .image_hotel {
+        max-width: 250px;
+    }
+
+    .lixeira {
+        width: 30px;
+        margin-left: 0px;
+        margin-top: 10px;
+        border-radius: 10px;
+        padding: 4px;
+    }
+
+    .title_resumo {
+        font-size: 1.8em;
+    }
+
+    .resumo div span {
+        font-size: 1.6em;
+    }
+
+    button {
+        font-size: 1.7em;
+    }
+
+    #finalizar {
+        font-size: 2em;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    a {
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 1em;
+    }
+
+    .bi {
+        display: none;
+    }
+
+    h1 {
+        font-size: 2.5em;
+        padding-bottom: 20px;
+    }
+
+    header {
+        padding-top: 20px;
+        padding-bottom: 25px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-right: 0%;
+    }
+
+    #links {
+        gap: 30px;
+    }
+
+    .reservas {
+        width: 72%;
+        float: left;
+        margin-bottom: 80px;
+    }
+
+    .reserva {
+        width: 100%;
+        margin-left: 2%;
+        display: flex;
+        padding-top: 30px;
+        margin-right: 0;
+        margin-top: 40px;
+    }
+
+    .reservaTitle {
+        font-size: 1.5em;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+    }
+
+    .infoText {
+        width: 100%;
+        margin-left: 5%;
+    }  
+
+    .periodo,
+    .total {
+        padding-top: 20px;
+        font-size: 1.5em;
+    }
+
+    .datasReserva {
+        font-size: 1.1em; 
+        padding-top: 20px;
+    }
+
+    .valorReserva {
+        font-size: 1.5em;
+        padding-top: 20px;
+    }
+
+    .quebraLinha{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .images {
+        margin: 0;
+        margin-left: 20px;
+    }
+
+    .image_hotel {
+        max-width: 200px;
+    }
+
+    .lixeira {
+        width: 25px;
+        margin-top: 5px; 
+    }
+
+    .resumo {
+        margin: 0;
+        margin-left: 75%;
+        margin-right: 2%;
+        margin-top: 40px;
+    }
+
+    .title_resumo {
+        font-size: 1.4em;
+        width: 100%;
+    }
+
+    .resumo div span {
+        font-size: 1.5em;
+    }
+
+    button {
+        font-size: 1.2em;
+        padding: 10px;
+        margin-left: 10.5%;
+        margin-right: 7.3%
+    }
+
+    #finalizar {
+        font-size: 1.5em;
+    }
+
+    footer {
+        font-size: 1.5em;
+    }
+
+    a {
+        font-size: 1.1em;
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    a {
+        font-size: 1.3em;
+    }
+
+    footer {
+        font-size: 1.4em;
+    }
+}

@@ -161,7 +161,7 @@ footer {
     #avaliacao {
         font-size: 1em;
         margin-top: 10px;
-
+        margin-left: 12%;
     }
 
     #valor {
@@ -169,9 +169,9 @@ footer {
         margin-top: 30px;
     }
 
-    .local{
-        display: flex;  
-        flex-direction: row;      
+    .local {
+        display: flex;
+        flex-direction: row;
         gap: 0;
     }
 
@@ -376,7 +376,40 @@ footer {
     }
 }
 
+@media screen and (min-width: 1500px) {
+    main {
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    main {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    form {
+        margin-left: 60px;
+    }
+}
+
+@media screen and (min-width: 1700px) {
+    main {
+        margin-left: 12%;
+        margin-right: 12%;
+    }
+
+    form {
+        margin-left: 80px;
+    }
+}
+
 @media screen and (min-width: 1900px) {
+    form {
+        margin-left: 40px;
+    }
+
     main {
         margin-left: 20%;
         margin-right: 20%;
