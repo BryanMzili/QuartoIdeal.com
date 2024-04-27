@@ -1,47 +1,11 @@
 document.querySelector('#registered').innerHTML = 'QUARTO IDEAL ' + new Date().getFullYear();
 let larguraInicial = $(window).width();
 
-const urlParams = new URLSearchParams(window.location.search);
-let id_hotel = urlParams.get('id');
+cartao();
 
 function abrirCarrinho() {
     window.location.href = 'carrinho.html';
 }
-
-$('form').submit(function (event) {
-    event.preventDefault();
-});
-
-function addCarrinho() {
-    criarCarrinho();
-
-    entrada = document.querySelector('#data_entrada').reportValidity();
-    saida = document.querySelector('#data_saida').reportValidity();
-
-    if (entrada && saida) {
-        let carrinho = JSON.parse(localStorage.getItem('carrinho'));
-        let hotel = {};
-        hotel.id = id_hotel;
-        hotel['data-entrada'] = $('#data_entrada').val() ;
-        hotel['data-saida'] = $('#data_saida').val();
-        
-        carrinho.carrinho.push(hotel);
-        salvarCarrinho(carrinho);
-
-        window.location.reload();
-    }
-}
-
-function criarCarrinho() {
-    if (localStorage.getItem('carrinho') == null) {
-        localStorage.setItem('carrinho', '{"carrinho":[]}');
-    }
-}
-
-function salvarCarrinho(carrinho){
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
-}
-
 
 $(window).on('resize', function () {
     let larguraAtual = $(window).width();
@@ -54,57 +18,85 @@ if (window.innerWidth < 1280) {
     let links = $('#links').html();
     $('#links').html('');
     setLinks(links);
-
-    let lbl_entrada = $('#lbl_data_entrada');
-    let lbl_saida = $('#lbl_data_saida');
-    let data_entrada = $('#data_entrada');
-    let data_saida = $('#data_saida');
-
-    $('.datas').html('');
-    $('.datas').append(lbl_entrada);
-    $('.datas').append(data_entrada);
-    $('.datas').append(lbl_saida);
-    $('.datas').append(data_saida);
 }
 
 $('.bi').click(abrirLateral);
 
+function anoExpiracao() {
+    let dataAtual = new Date().getFullYear();
+    let opcoes = $('#ano');
 
-
-$.getJSON('../hoteis.json', function (data) {
-    $.each(data, function (key, value) {
-        $.each(value, function (chave, valor) {
-
-            if (id_hotel == valor.id) {
-                $('#title').html(valor.nome);
-                $('#hotel-image').attr('src', '../images/' + valor.imagem);
-                $('#avaliacao').html(valor.nota);
-                let nota = " - ";
-                if (valor.nota <= 2.9) {
-                    nota += 'Muito Ruim'
-                } else if (valor.nota <= 5.9) {
-                    nota += 'Ruim'
-                } else if (valor.nota <= 7.9) {
-                    nota += 'Bom'
-                } else if (valor.nota <= 8.9) {
-                    nota += 'Muito Bom'
-                } else if (valor.nota >= 9.0) {
-                    nota += 'Excelente'
-                }
-                $('#avaliacao').append(nota);
-                $('#avaliacao').append("(" + valor.numAval + ")");
-
-                $('#localidade').html(valor.regiao);
-                $('#valor').html("R$ " + valor.valor.toFixed(2).replace('.', ',') + " p/d");
-            }
-        });
-    });
-    if (window.innerWidth < 1280) {
-        let title = $('#title').html();
-        $('#title').html('');
-        $('#title_mobile').html(title);
+    for (let i = 0; i <= 10; i++) {
+        let opcao = $('<option>')
+        opcao.val(dataAtual + i);
+        opcao.html(dataAtual + i);
+        opcoes.append(opcao);
     }
+}
 
-}).fail(function () {
-    console.log('Erro ao carregar o arquivo JSON.');
-});
+function cartao() {
+    $('.metodoPagamento').html('<label for="titular" class="poppins">Titular do Cartão<span style="color: #F00;">*</span></label>' +
+        '<input type="text" id="titular" class="inter" required>' +
+
+        '<label for="numero" class="poppins">Número do Cartão<span style="color: #F00;">*</span></label>' +
+        '<input type="text" id="numero" class="inter" placeholder="XXXX XXXX XXXX XXXX" minlength="19" required>' +
+
+        '<label for="mes" class="poppins">Data de expiração<span style="color: #F00;">*</span></label>' +
+        '<div class="datas" class="inter">' +
+        '<select id="mes" required class="inter">' +
+        '<option value="">Mês</option>' +
+        '<option value="01">Janeiro</option>' +
+        '<option value="02">Fevereiro</option>' +
+        '<option value="03">Março</option>' +
+        '<option value="04">Abril</option>' +
+        '<option value="05">Maio</option>' +
+        '<option value="06">Junho</option>' +
+        '<option value="07">Julho</option>' +
+        '<option value="08">Agosto</option>' +
+        '<option value="09">Setembro</option>' +
+        '<option value="10">Outubro</option>' +
+        '<option value="11">Novembro</option>' +
+        '<option value="12">Dezembro</option>' +
+        '</select>' +
+
+        '<select id="ano" required>' +
+        '<option value="">Ano</option>' +
+        '</select>' +
+        '</div>' +
+
+        '<label for="codigo" class="poppins">CVV/CVC<span style="color: #F00;">*</span></label>' +
+        '<div>' +
+        '<input type="text" id="codigo" maxlength="3" minlength="3" required placeholder="XXX">' +
+        '</div>' +
+
+        '<button id="pagamento" class="poppins" onclick="pagamentoCartao()">Finalizar Pagamento</button>');
+    anoExpiracao();
+    $('#numero').mask('0000 0000 0000 0000');
+}
+
+function pagamentoCartao() {
+    let aux = [];
+
+    aux.push(document.querySelector('#codigo').reportValidity());
+    aux.push(document.querySelector('#ano').reportValidity());
+    aux.push(document.querySelector('#mes').reportValidity());
+    aux.push(document.querySelector('#numero').reportValidity());
+    aux.push(document.querySelector('#titular').reportValidity());
+
+    if (!aux.includes(false)) {
+        pagamentoEfetuado();
+    }
+}
+
+function pix() {
+    $('.metodoPagamento').html('<img id="qrcode" alt="Imagem QR CODE">' +
+        '<p class="inter" id="obs">*O QR Code acima contém a url relativa da página de pagamento efetuado, para prosseguir pressione o botão abaixo.*</p>' +
+        '<button onclick="pagamentoEfetuado()" id="revisarPagamento" class="poppins">Revisar pagamento</button>');
+    let url = './pagamentoEfetuado.html';
+    let pixURL = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + url;
+    $('#qrcode').attr('src', pixURL);
+}
+
+function pagamentoEfetuado() {
+    window.location.href = 'pagamentoEfetuado.html';
+}

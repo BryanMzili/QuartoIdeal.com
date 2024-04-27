@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/pagamento.css">
+    <link rel="stylesheet" href="../styles/fa-registered.css">
+    <script src="../scripts/pagamentoEfetuado.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <meta name="author" content="Bryan Lemes">
+    <link rel="shortcut icon" href="../icones/favicon.ico" type="image/x-icon">
+    <title>Pagamento Efetuado</title>
+    <style defer>
+        header {
+            padding: 25px;
+        }
+
+        .mainp {
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 20px;
+            font-size: 1em;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0%;
+        }
+
+        @media screen and (min-width: 500px) {
+            .mainp {
+                text-align: center;
+                font-size: 1.3em;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <h1 class="poppins">Pagamento Efetuado</h1>
+        <p class="poppins mainp">Redirecionando para a tela inicial
+            em <span id="segundo">3 segundo(s)</span>...</p>
+    </main>
+    <footer>
+        <span class="poppins" id='registered'></span>
+        <i class="fa-regular fa-registered" style="color: #000; font-size: 20px; padding: 0;"></i>
+    </footer>
+    <div class="lista" id="lista"></div>
+</body>
+
+</html>

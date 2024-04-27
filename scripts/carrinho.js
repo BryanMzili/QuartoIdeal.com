@@ -74,6 +74,22 @@ function salvarCarrinho(carrinho) {
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
 
+function limparCarrinho() {
+    try {
+        let carrinho = JSON.parse(localStorage.getItem('carrinho')).carrinho;
+        if (carrinho.length >= 1) {
+            if (confirm("Tem certeza que deseja prosseguir?")) {
+                localStorage.setItem('carrinho', '{"carrinho":[]}');
+                location.reload();
+            }
+        }
+    } catch (e) { }
+}
+
+function finalizarReserva() {
+    window.location.href = './pagamento.html';
+}
+
 $(window).on('resize', function () {
     let larguraAtual = $(window).width();
     if (larguraAtual !== larguraInicial) {

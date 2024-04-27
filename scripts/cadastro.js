@@ -20,7 +20,6 @@ if (window.innerWidth < 1280) {
     $('#lateral').html('');
 }
 
-
 $(window).on('resize', function () {
     let larguraAtual = $(window).width();
     if (larguraAtual !== larguraInicial) {
@@ -34,18 +33,6 @@ field_2.addEventListener('keydown', next);
 
 attState();
 definirEtapa();
-
-// field_1.value = 'Bryan';
-// field_2.value = '000.000.000-00';
-// verificar();
-// field_1.value = '2000-03-19';
-// field_2.value = 'Endereço';
-// verificar();
-// field_1.value = 'bryan@gmail.com';
-// field_2.value = '(00) 00000-0000';
-// verificar();
-// field_1.value = 'bryan';
-// field_2.value = 'Bryan123@';
 
 function voltar() {
     if (aux > 0) {

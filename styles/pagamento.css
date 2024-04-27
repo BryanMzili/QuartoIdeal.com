@@ -60,26 +60,6 @@ header {
     border-radius: 10px;
 }
 
-main {
-    background-color: #FFF;
-}
-
-main p {
-    margin: 0;
-}
-
-#reservar {
-    background-color: #6160B8;
-    cursor: pointer;
-}
-
-#add-carrinho {
-    border: solid #6160B8 2px;
-    background-color: #FFF;
-    color: #6160B8;
-    cursor: pointer;
-}
-
 footer {
     width: 100%;
     height: 100px;
@@ -93,6 +73,32 @@ footer {
     cursor: pointer;
     font-size: 1.3em;
     font-weight: 600
+}
+
+h1 {
+    text-align: center;
+    color: #000;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+}
+
+.buttons button {
+    border: none;
+    background-color: #e3e3e3;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    background-color: #FFF;
+    transition: ease 0.1s;
+}
+
+.metodoPagamento {
+    background-color: #FFF;
 }
 
 @media screen and (min-width: 0px) {
@@ -113,6 +119,11 @@ footer {
         font-size: 0.8em;
     }
 
+    h1 {
+        padding-top: 20px;
+        font-size: 1.6em;
+    }
+
     #links {
         gap: 20px;
     }
@@ -130,122 +141,108 @@ footer {
         padding-bottom: 5px;
     }
 
-    main {
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-top: 20px;
-        margin-bottom: 5%;
+    .buttons {
+        width: 100%;
+    }
 
-        padding-top: 20px;
-        padding-bottom: 40px;
-        padding-left: 25px;
-        padding-right: 25px;
+    .buttons button {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
 
+    hr {
+        width: 85%;
+    }
+
+    .metodoPagamento {
         display: flex;
         flex-direction: column;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 13px;
+        padding-top: 0px;
         border-radius: 10px;
+        margin-bottom: 30px;
+        margin-top: 20px;
     }
 
-    main img {
-        max-width: 250px;
+    .metodoPagamento label {
+        margin-top: 15px;
+    }
+
+    .metodoPagamento input[type="text"] {
+        padding: 3px;
+    }
+
+    #ano {
+        margin-left: 20px;
+    }
+
+    #codigo {
+        width: 40px;
+    }
+
+    #pagamento {
+        margin-top: 15px;
+        font-size: 1.3em;
+        font-weight: 500;
+        background-color: #6160B8;
+        border: none;
+    }
+
+    #qrcode {
+        width: 200px;
         margin: auto;
+        padding-top: 15px;
     }
 
-    #title_mobile {
-        font-size: 1.5em;
+    #obs {
+        width: 200px;
+        margin: auto;
+        font-size: 0.8em;
+        color: gray;
+    }
+
+    #revisarPagamento {
+        width: 200px;
+        margin: auto;
+        margin-top: 15px;
+        font-size: 1.1em;
         font-weight: 600;
-        text-align: center;
-        padding-bottom: 10px;
+        background-color: #6160B8;
+        border: none;
+        border-radius: 13px;
     }
-
-    #avaliacao {
-        font-size: 1em;
-        margin-top: 10px;
-        margin-left: 12%;
-    }
-
-    #valor {
-        font-size: 1.5em;
-        margin-top: 30px;
-    }
-
-    .local {
-        display: flex;
-        flex-direction: row;
-        gap: 0;
-    }
-
-    #localizacao {
-        margin-left: -1%;
-        width: 20px;
-        margin-right: 0;
-    }
-
-    .datas {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
-        gap: 20px;
-        row-gap: 0px;
-        margin-top: 0px;
-    }
-
-    .datas label {
-        margin-top: 30px;
-    }
-
-    #reservar {
-        width: 100%;
-        margin-top: 60px;
-        font-size: 1.2em;
-        border-radius: 10px;
-
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-
-    #add-carrinho {
-        width: 100%;
-        margin-top: 40px;
-        font-size: 1.2em;
-        border-radius: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-
 }
 
 @media screen and (min-width: 700px) {
-    main img {
-        max-width: 400px;
+    h1{
+        font-size: 2.1em;
+    }
+    .metodoPagamento label {
+        font-size: 1.2em; 
     }
 
-    #title_mobile {
-        font-size: 2em;
+    .metodoPagamento select {
+        font-size: 1em;
     }
 
-    #avaliacao {
-        font-size: 1.2em;
+    .metodoPagamento input[type="text"] {
+        font-size: 1.1em;
+        padding: 3px;
     }
-
-    #valor {
-        font-size: 2em;
+    
+    .buttons button {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        font-size: 1.1em;
     }
-
-    .datas input[type="date"] {
+    
+    #pagamento {
+        margin-top: 20px; 
         font-size: 1.5em;
-    }
-
-    .datas label {
-        font-size: 1.5em;
-    }
-
-    #reservar {
-        font-size: 2em;
-    }
-
-    #add-carrinho {
-        font-size: 2em;
     }
 }
 
@@ -256,6 +253,11 @@ footer {
         padding-top: 5px;
         padding-bottom: 5px;
         font-size: 1em;
+    }
+
+    h1 {
+        font-size: 2.5em;
+        padding-bottom: 20px;
     }
 
     .bi {
@@ -283,165 +285,33 @@ footer {
         padding-bottom: 5px;
     }
 
-    main {
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-top: 4%;
-        margin-bottom: 5%;
-
-        padding-left: 40px;
-        padding-right: 40px;
-        padding-top: 40px;
-        padding-bottom: 80px;
-
-        display: flex;
-        flex-direction: row;
-        border-radius: 10px;
-    }
-
-    main img {
-        max-width: 700px;
-        margin: auto;
-        margin-right: 0%;
-        margin-left: 5%;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-        margin-left: 40px;
-        margin-right: 10px;
-
-        border: 1px #000 solid;
-        border-radius: 20px;
-
-        padding-top: 20px;
-        padding-left: 10px;
-        padding-right: 20px;
-    }
-
-    #title {
-        font-size: 2em;
-        font-weight: 600;
-    }
-
-    #avaliacao {
-        font-size: 0.9em;
-        margin-top: 10px;
-    }
-
-    #valor {
-        font-size: 1.5em;
-        margin-top: 30px;
-    }
-
-    #localizacao {
-        width: 20px;
-    }
-
-    .datas {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        gap: 20px;
-        row-gap: 0;
-        margin-top: 40px;
-    }
-
-    .datas label {
-        margin-top: 0px;
-        font-size: 1em;
-    }
-
-
-    .datas input[type="date"] {
-        font-size: 1.2em;
-    }
-
-    #reservar {
-        margin-top: 40px;
-        font-size: 1.3em;
-        border-radius: 10px;
-
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-
-    #add-carrinho {
-        margin-top: 20px;
-        font-size: 1.3em;
-        border-radius: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-}
-
-@media screen and (min-width: 1500px) {
-    main {
-        margin-left: 8%;
-        margin-right: 8%;
-    }
-}
-
-@media screen and (min-width: 1600px) {
-    main {
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-
-    form {
-        margin-left: 60px;
-    }
-}
-
-@media screen and (min-width: 1700px) {
-    main {
-        margin-left: 12%;
-        margin-right: 12%;
-    }
-
-    form {
-        margin-left: 80px;
+    .metodoPagamento {
+        margin-left: 25%;
+        margin-right: 25%; 
+        margin-bottom: 200px;
     }
 }
 
 @media screen and (min-width: 1900px) {
-    form {
-        margin-left: 40px;
-    }
-
-    main {
-        margin-left: 20%;
-        margin-right: 20%;
-        margin-top: 4%;
-        margin-bottom: 5%;
-
-        padding-left: 0px;
-        padding-right: 20px;
-        padding-top: 40px;
-        padding-bottom: 80px;
-
-        display: flex;
-        flex-direction: row;
-        border-radius: 10px;
-    }
-
-    main img {
-        max-width: 700px;
-        margin: auto;
-        margin-right: 0%;
-        margin-left: 40px;
-    }
-
-    #localizacao {
-        width: 25px;
-    }
-
     a {
         font-size: 1.3em;
     }
 
     footer {
         font-size: 1.4em;
+    }
+
+    
+    .metodoPagamento {
+        margin-left: 30%;
+        margin-right: 30%; 
+        margin-bottom: 200px;
+    }
+}
+
+@media screen and (min-height: 600px) {
+    footer {
+        position: fixed;
+        bottom: 0%;
     }
 }

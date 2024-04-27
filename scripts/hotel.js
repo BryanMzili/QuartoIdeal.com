@@ -22,13 +22,21 @@ function addCarrinho() {
         let carrinho = JSON.parse(localStorage.getItem('carrinho'));
         let hotel = {};
         hotel.id = id_hotel;
-        hotel['data-entrada'] = $('#data_entrada').val() ;
+        hotel['data-entrada'] = $('#data_entrada').val();
         hotel['data-saida'] = $('#data_saida').val();
-        
+
         carrinho.carrinho.push(hotel);
         salvarCarrinho(carrinho);
 
         window.location.reload();
+    }
+}
+function reservarHotel() {
+    entrada = document.querySelector('#data_entrada').reportValidity();
+    saida = document.querySelector('#data_saida').reportValidity();
+
+    if (entrada && saida) {
+        window.location.href = './pagamento.html';
     }
 }
 
@@ -38,10 +46,9 @@ function criarCarrinho() {
     }
 }
 
-function salvarCarrinho(carrinho){
+function salvarCarrinho(carrinho) {
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
-
 
 $(window).on('resize', function () {
     let larguraAtual = $(window).width();
@@ -68,8 +75,6 @@ if (window.innerWidth < 1280) {
 }
 
 $('.bi').click(abrirLateral);
-
-
 
 $.getJSON('../hoteis.json', function (data) {
     $.each(data, function (key, value) {
