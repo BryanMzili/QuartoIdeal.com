@@ -21,7 +21,7 @@ function addCarrinho() {
     if (entrada && saida) {
         let carrinho = JSON.parse(localStorage.getItem('carrinho'));
         let hotel = {};
-        hotel.id = id_hotel;
+        hotel.id_hotel = id_hotel;
         hotel['data-entrada'] = $('#data_entrada').val();
         hotel['data-saida'] = $('#data_saida').val();
 
@@ -36,6 +36,12 @@ function reservarHotel() {
     saida = document.querySelector('#data_saida').reportValidity();
 
     if (entrada && saida) {
+        let hotel = {};
+        hotel.id_hotel = id_hotel;
+        hotel['data-entrada'] = $('#data_entrada').val();
+        hotel['data-saida'] = $('#data_saida').val();
+
+        localStorage.setItem('finalizar-compra', '{"carrinho":[' + JSON.stringify(hotel) + ']}');
         window.location.href = './pagamento.html';
     }
 }

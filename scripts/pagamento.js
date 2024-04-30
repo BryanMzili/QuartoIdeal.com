@@ -1,7 +1,18 @@
 document.querySelector('#registered').innerHTML = 'QUARTO IDEAL ' + new Date().getFullYear();
 let larguraInicial = $(window).width();
 
-cartao();
+const urlParams = new URLSearchParams(window.location.search);
+let apagarCarrinho = urlParams.get('carrinho');
+
+let compra = localStorage.getItem('finalizar-compra');
+let hoteis = {};
+
+$.getJSON('../hoteis.json', function (data) {
+    hoteis = data;
+    cartao();
+}).fail(function () {
+    console.log('Erro ao carregar o arquivo JSON.');
+});
 
 function abrirCarrinho() {
     window.location.href = 'carrinho.html';
@@ -68,10 +79,12 @@ function cartao() {
         '<div>' +
         '<input type="text" id="codigo" maxlength="3" minlength="3" required placeholder="XXX">' +
         '</div>' +
+        '<div class="poppins valor">VALOR: <span id="valor">R$</span></div>' +
 
         '<button id="pagamento" class="poppins" onclick="pagamentoCartao()">Finalizar Pagamento</button>');
     anoExpiracao();
     $('#numero').mask('0000 0000 0000 0000');
+    calcularValor(compra, hoteis.hoteis);
 }
 
 function pagamentoCartao() {
@@ -91,12 +104,39 @@ function pagamentoCartao() {
 function pix() {
     $('.metodoPagamento').html('<img id="qrcode" alt="Imagem QR CODE">' +
         '<p class="inter" id="obs">*O QR Code acima contém a url relativa da página de pagamento efetuado, para prosseguir pressione o botão abaixo.*</p>' +
+        '<div class="poppins valor" style="text-align:center">VALOR: <span id="valor">R$</span></div>' +
         '<button onclick="pagamentoEfetuado()" id="revisarPagamento" class="poppins">Revisar pagamento</button>');
     let url = './pagamentoEfetuado.html';
     let pixURL = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + url;
     $('#qrcode').attr('src', pixURL);
+    calcularValor(compra, hoteis.hoteis);
 }
 
 function pagamentoEfetuado() {
+    if (apagarCarrinho == 'true') {
+        localStorage.setItem('carrinho', '{"carrinho":[]}');
+    }
     window.location.href = 'pagamentoEfetuado.html';
+}
+
+function calcularValor(compra, hoteis) {
+    let carrinho = JSON.parse(compra).carrinho;
+    let valor = 0.0;
+
+    $.each(carrinho, function (key, value) {
+        let hotel = $.grep(hoteis, function (objeto) {
+            return objeto.id == value.id_hotel;
+        })[0];
+
+        valor += calcularValorHotel(value['data-entrada'], value['data-saida'], hotel.valor);
+    });
+    $('#valor').html("R$ " + valor.toFixed(2).replace('.', ','));
+}
+
+function calcularValorHotel(entrada, saida, valor) {
+    let miliseconds = new Date(saida) - new Date(entrada);
+    let dias = Math.round(miliseconds / (1000 * 60 * 60 * 24));
+
+    let result = valor * dias;
+    return result;
 }

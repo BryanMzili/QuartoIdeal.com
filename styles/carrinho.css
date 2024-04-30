@@ -427,7 +427,7 @@ h1 {
     }
 }
 
-@media screen and (min-height: 600px) {
+@media screen and (min-height:600px) and (max-height: 800px) {
     footer {
         position:fixed;
         bottom: 0%;

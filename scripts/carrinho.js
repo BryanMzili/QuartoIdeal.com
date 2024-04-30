@@ -18,7 +18,7 @@ function listarReservas() {
 
             $.each(carrinho, function (chave, valor) {
                 let hotel = $.grep(hoteis.hoteis, function (objeto) {
-                    return objeto.id == valor.id;
+                    return objeto.id == valor.id_hotel;
                 })[0];
 
                 let reserva = '<div class="reserva">' +
@@ -87,7 +87,10 @@ function limparCarrinho() {
 }
 
 function finalizarReserva() {
-    window.location.href = './pagamento.html';
+    
+    let carrinho = localStorage.getItem('carrinho');
+    localStorage.setItem('finalizar-compra', carrinho);
+    window.location.href = './pagamento.html?carrinho=true';
 }
 
 $(window).on('resize', function () {
@@ -132,5 +135,3 @@ function responsividade() {
 
     $('.bi').click(abrirLateral);
 }
-
-
