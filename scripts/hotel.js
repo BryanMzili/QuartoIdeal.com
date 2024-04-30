@@ -4,6 +4,31 @@ let larguraInicial = $(window).width();
 const urlParams = new URLSearchParams(window.location.search);
 let id_hotel = urlParams.get('id');
 
+let dataAtual = new Date();
+$('#data_entrada').attr('min', dataAtual.toISOString().split('T')[0]);
+
+dataAtual.setDate(dataAtual.getDate() + 1);
+$('#data_saida').attr('min', dataAtual.toISOString().split('T')[0]);
+$('#data_saida').prop('disabled', true);
+
+//Liberar o campo de data de entrada para ser utilizado
+$('#data_entrada').on('change', function () {
+
+    if ($(this).val().length == 10) {
+        dataAtual = new Date();
+
+        if (new Date($(this).val()) > dataAtual) {
+            let dataMinima = new Date($(this).val());
+            dataMinima.setDate(dataMinima.getDate() + 1);
+            $('#data_saida').attr('min', (dataMinima).toISOString().split('T')[0]);
+        }
+        $('#data_saida').prop('disabled', false);
+    }else{
+        $('#data_saida').val('');
+        $('#data_saida').prop('disabled', true);
+    }
+});
+
 function abrirCarrinho() {
     window.location.href = 'carrinho.html';
 }
