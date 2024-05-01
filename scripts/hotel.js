@@ -12,8 +12,7 @@ $('#data_saida').attr('min', dataAtual.toISOString().split('T')[0]);
 $('#data_saida').prop('disabled', true);
 
 //Liberar o campo de data de entrada para ser utilizado
-$('#data_entrada').on('change', function () {
-
+document.querySelector('#data_entrada').addEventListener('change', function () {
     if ($(this).val().length == 10) {
         dataAtual = new Date();
 
@@ -23,7 +22,7 @@ $('#data_entrada').on('change', function () {
             $('#data_saida').attr('min', (dataMinima).toISOString().split('T')[0]);
         }
         $('#data_saida').prop('disabled', false);
-    }else{
+    } else {
         $('#data_saida').val('');
         $('#data_saida').prop('disabled', true);
     }
@@ -43,31 +42,38 @@ function addCarrinho() {
     entrada = document.querySelector('#data_entrada').reportValidity();
     saida = document.querySelector('#data_saida').reportValidity();
 
-    if (entrada && saida) {
-        let carrinho = JSON.parse(localStorage.getItem('carrinho'));
-        let hotel = {};
-        hotel.id_hotel = id_hotel;
-        hotel['data-entrada'] = $('#data_entrada').val();
-        hotel['data-saida'] = $('#data_saida').val();
+    if (!$('#data_saida').prop('disabled')) {
+        if (entrada && saida) {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho'));
+            let hotel = {};
+            hotel.id_hotel = id_hotel;
+            hotel['data-entrada'] = $('#data_entrada').val();
+            hotel['data-saida'] = $('#data_saida').val();
 
-        carrinho.carrinho.push(hotel);
-        salvarCarrinho(carrinho);
+            carrinho.carrinho.push(hotel);
+            salvarCarrinho(carrinho);
 
-        window.location.reload();
+            window.location.reload();
+        }
     }
 }
+
 function reservarHotel() {
     entrada = document.querySelector('#data_entrada').reportValidity();
     saida = document.querySelector('#data_saida').reportValidity();
 
-    if (entrada && saida) {
-        let hotel = {};
-        hotel.id_hotel = id_hotel;
-        hotel['data-entrada'] = $('#data_entrada').val();
-        hotel['data-saida'] = $('#data_saida').val();
+    if (!$('#data_saida').prop('disabled')) {
+        if (entrada && saida) {
+            let hotel = {};
+            hotel.id_hotel = id_hotel;
+            hotel['data-entrada'] = $('#data_entrada').val();
+            hotel['data-saida'] = $('#data_saida').val();
 
-        localStorage.setItem('finalizar-compra', '{"carrinho":[' + JSON.stringify(hotel) + ']}');
-        window.location.href = './pagamento.html';
+            $('#data_entrada').val('');
+
+            localStorage.setItem('finalizar-compra', '{"carrinho":[' + JSON.stringify(hotel) + ']}');
+            window.location.href = './pagamento.html';
+        }
     }
 }
 

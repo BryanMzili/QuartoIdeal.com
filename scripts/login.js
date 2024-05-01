@@ -5,9 +5,7 @@ let larguraInicial = $(window).width();
 
 btn_forgot.addEventListener('click', forgotPassword);
 
-// usuario.value = 'bryan';
-// senha.value = 'Bryan123@';
-// login();
+
 
 function login() {
     const chave = {};
