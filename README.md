@@ -6,12 +6,15 @@ Em desenvolvimento
 # Tecnologias
 ## Back-End
 * Java
+* Spring Web
+* Thymeleaf
 * MySQL
   
 ## Front-End
 * HTML
 * CSS
 * JavaScript
+* JQuery
 
 # Colaboradores
   * [Bryan Lemes](https://github.com/BryanMzili)
