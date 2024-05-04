@@ -1,11 +1,11 @@
 function viewIcon() {
     iconView.style.display = 'block';
-    iconView.src = '../images/visualizar.png';
+    iconView.src = '../../images/visualizar.png';
 }
 
 function noViewIcon() {
     iconView.style.display = 'block';
-    iconView.src = '../images/nao_visualizar.png';
+    iconView.src = '../../images/nao_visualizar.png';
 }
 
 function noIcon() {

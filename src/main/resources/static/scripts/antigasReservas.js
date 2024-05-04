@@ -5,7 +5,7 @@ let hoteis;
 responsividade();
 
 try {
-    $.getJSON('../hoteis.json', function (data) {
+    $.getJSON('../../hoteis.json', function (data) {
         hoteis = data;
         let reservas = JSON.parse(localStorage.getItem('reservas'));
         listarReservas(reservas.reservas, hoteis);
@@ -17,7 +17,7 @@ try {
 } catch (e) { }
 
 function abrirCarrinho() {
-    window.location.href = 'carrinho.html';
+    window.location.href = 'carrinho';
 }
 
 $(window).on('resize', function () {
@@ -71,7 +71,7 @@ function listarReservas(reservas, hoteis) {
             '<hr>' +
             '<div class="infoReserva">' +
             '<div class="images">' +
-            '<img src="../images/' + hotel.imagem + '" alt="Foto do hotel" class="image_hotel">' +
+            '<img src="../../images/' + hotel.imagem + '" alt="Foto do hotel" class="image_hotel">' +
             '</div>' +
 
             '<div class="infoText">' +

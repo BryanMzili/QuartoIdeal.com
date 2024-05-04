@@ -7,7 +7,7 @@ let apagarCarrinho = urlParams.get('carrinho');
 let compra = localStorage.getItem('finalizar-compra');
 let hoteis = {};
 
-$.getJSON('../hoteis.json', function (data) {
+$.getJSON('../../hoteis.json', function (data) {
     hoteis = data;
     cartao();
 }).fail(function () {
@@ -15,7 +15,7 @@ $.getJSON('../hoteis.json', function (data) {
 });
 
 function abrirCarrinho() {
-    window.location.href = 'carrinho.html';
+    window.location.href = 'carrinho';
 }
 
 $(window).on('resize', function () {
@@ -106,7 +106,7 @@ function pix() {
         '<p class="inter" id="obs">*O QR Code acima contém a url relativa da página de pagamento efetuado, para prosseguir pressione o botão abaixo.*</p>' +
         '<div class="poppins valor" style="text-align:center">VALOR: <span id="valor">R$</span></div>' +
         '<button onclick="pagamentoEfetuado()" id="revisarPagamento" class="poppins">Revisar pagamento</button>');
-    let url = './pagamentoEfetuado.html';
+    let url = './pagamentoEfetuado';
     let pixURL = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + url;
     $('#qrcode').attr('src', pixURL);
     calcularValor(compra, hoteis.hoteis);
@@ -116,7 +116,7 @@ function pagamentoEfetuado() {
     if (apagarCarrinho == 'true') {
         localStorage.setItem('carrinho', '{"carrinho":[]}');
     }
-    window.location.href = 'pagamentoEfetuado.html';
+    window.location.href = 'pagamentoEfetuado';
 }
 
 function calcularValor(compra, hoteis) {

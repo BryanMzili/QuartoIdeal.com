@@ -56,7 +56,7 @@ function cadastrar() {
 }
 
 function Login() {
-    window.location.href = "login.html";
+    window.location.href = "login";
 }
 
 function attState() {

@@ -29,7 +29,7 @@ function iniciarContador() {
         segundos--;
         setTimeout(iniciarContador, 1500);
     } else {
-        window.location.href = '../index.html';
+        window.location.href = '/QuartoIdeal/';
     }
 }
 

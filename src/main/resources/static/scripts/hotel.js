@@ -29,7 +29,7 @@ document.querySelector('#data_entrada').addEventListener('change', function () {
 });
 
 function abrirCarrinho() {
-    window.location.href = 'carrinho.html';
+    window.location.href = 'carrinho';
 }
 
 $('form').submit(function (event) {
@@ -72,7 +72,7 @@ function reservarHotel() {
             $('#data_entrada').val('');
 
             localStorage.setItem('finalizar-compra', '{"carrinho":[' + JSON.stringify(hotel) + ']}');
-            window.location.href = './pagamento.html';
+            window.location.href = './pagamento';
         }
     }
 }
@@ -113,13 +113,13 @@ if (window.innerWidth < 1280) {
 
 $('.bi').click(abrirLateral);
 
-$.getJSON('../hoteis.json', function (data) {
+$.getJSON('../../hoteis.json', function (data) {
     $.each(data, function (key, value) {
         $.each(value, function (chave, valor) {
 
             if (id_hotel == valor.id) {
                 $('#title').html(valor.nome);
-                $('#hotel-image').attr('src', '../images/' + valor.imagem);
+                $('#hotel-image').attr('src', '../../images/' + valor.imagem);
                 $('#avaliacao').html(valor.nota);
                 let nota = " - ";
                 if (valor.nota <= 2.9) {

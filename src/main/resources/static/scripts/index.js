@@ -2,11 +2,11 @@ let larguraInicial = $(window).width();
 
 function abrirHotel() {
     let id_hotel = $(this).find("#id").val();
-    window.location.href = 'pages/hotel.html?id=' + id_hotel;
+    window.location.href = '/QuartoIdeal/pages/hotel?id=' + id_hotel;
 }
 
 function abrirCarrinho(){
-    window.location.href = 'pages/carrinho.html';
+    window.location.href = '/QuartoIdeal/pages/carrinho';
 }
 
 document.querySelector('#registered').innerHTML = 'QUARTO IDEAL ' + new Date().getFullYear();
@@ -27,26 +27,26 @@ $.getJSON('./hoteis.json', function (data) {
             hotel += '<input type="hidden" id="id" value="' + valor.id + '">';
             hotel += '<img class="images-hotel" src="images/' + valor.imagem + '" alt="image-hotel">';
             hotel += '<p class="description-hotel inter">' + valor.nome + '</p>';
-            hotel += '<div class="assesment-location">'
+            hotel += '<div class="assesment-location">';
             hotel += '<div class="hotel-assesment inter"><b>' + valor.nota + ' - ';
             if (valor.nota <= 2.9) {
-                hotel += 'Muito Ruim'
+                hotel += 'Muito Ruim';
             } else if (valor.nota <= 5.9) {
-                hotel += 'Ruim'
+                hotel += 'Ruim';
             } else if (valor.nota <= 7.9) {
-                hotel += 'Bom'
+                hotel += 'Bom';
             } else if (valor.nota <= 8.9) {
-                hotel += 'Muito Bom'
+                hotel += 'Muito Bom';
             } else if (valor.nota >= 9.0) {
-                hotel += 'Excelente'
+                hotel += 'Excelente';
             }
 
-            hotel += '(' + valor.numAval + ')</b></div>'
-            hotel += '<img src="icones/localizacao.svg" id="localizacao" alt="localizacao">'
-            hotel += '<div class="hotel-location inter">' + valor.regiao + '</div>'
+            hotel += '(' + valor.numAval + ')</b></div>';
+            hotel += '<img src="icones/localizacao.svg" id="localizacao" alt="localizacao">';
+            hotel += '<div class="hotel-location inter">' + valor.regiao + '</div>';
 
-            hotel += '</div>'//assesment-location
-            hotel += '</div>'//hotel
+            hotel += '</div>';//assesment-location
+            hotel += '</div>';//hotel
 
             $(".Hoteis").append(hotel);
         });

@@ -2,7 +2,7 @@ let larguraInicial = $(window).width();
 document.querySelector('#registered').innerHTML = 'QUARTO IDEAL ' + new Date().getFullYear();
 let hoteis, resumo = 0;
 responsividade();
-$.getJSON('../hoteis.json', function (data) {
+$.getJSON('../../hoteis.json', function (data) {
     hoteis = data;
     listarReservas();
     responsividade();
@@ -26,8 +26,8 @@ function listarReservas() {
                     '<hr>' +
                     '<div class="infoReserva">' +
                     '<div class="images">' +
-                    '<img src="../images/' + hotel.imagem + '" alt="Foto do hotel" class="image_hotel">' +
-                    '<img src="../icones/lixeira.png" alt="lixeira" class="lixeira" onclick="removerCarrinho(' + chave + ')">' +
+                    '<img src="../../images/' + hotel.imagem + '" alt="Foto do hotel" class="image_hotel">' +
+                    '<img src="../../icones/lixeira.png" alt="lixeira" class="lixeira" onclick="removerCarrinho(' + chave + ')">' +
                     '</div>' +
 
                     '<div class="infoText">' +
@@ -90,7 +90,7 @@ function finalizarReserva() {
     
     let carrinho = localStorage.getItem('carrinho');
     localStorage.setItem('finalizar-compra', carrinho);
-    window.location.href = './pagamento.html?carrinho=true';
+    window.location.href = './pagamento?carrinho=true';
 }
 
 $(window).on('resize', function () {

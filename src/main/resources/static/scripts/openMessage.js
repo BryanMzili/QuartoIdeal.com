@@ -49,7 +49,7 @@ function fechar(event) {
 }
 
 function login() {
-    window.location.href = "login.html";
+    window.location.href = "login";
 }
 
 function telaCadastro() {
