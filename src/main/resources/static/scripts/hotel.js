@@ -9,14 +9,15 @@ $('#data_saida').prop('disabled', true);
 
 //Liberar o campo de data de entrada para ser utilizado
 document.querySelector('#data_entrada').addEventListener('change', function () {
-    if ($(this).val().length == 10) {
+    if ($('#data_entrada').val().length == 10) {
         dataAtual = new Date();
 
-        if (new Date($(this).val()) > dataAtual) {
-            let dataMinima = new Date($(this).val());
+        if (new Date($('#data_entrada').val()) >= dataAtual) {
+            let dataMinima = new Date($('#data_entrada').val());
             dataMinima.setDate(dataMinima.getDate() + 1);
             $('#data_saida').attr('min', (dataMinima).toISOString().split('T')[0]);
         }
+
         $('#data_saida').prop('disabled', false);
     } else {
         $('#data_saida').val('');
@@ -46,6 +47,13 @@ function addCarrinho() {
             $.each(formArray, function (i, field) {
                 formData[field.name] = field.value;
             });
+            let auxData = new Date(formData.data_entrada);
+            auxData.setHours(auxData.getHours() + 3);
+            formData.data_entrada = auxData;
+
+            auxData = new Date(formData.data_saida);
+            auxData.setHours(auxData.getHours() + 3);
+            formData.data_saida = auxData;
 
             formData.hotel = {"id": parseInt(formData.hotel)};
 
@@ -90,6 +98,14 @@ function reservarHotel() {
             $.each(formArray, function (i, field) {
                 formData[field.name] = field.value;
             });
+
+            let auxData = new Date(formData.data_entrada);
+            auxData.setHours(auxData.getHours() + 3);
+            formData.data_entrada = auxData;
+
+            auxData = new Date(formData.data_saida);
+            auxData.setHours(auxData.getHours() + 3);
+            formData.data_saida = auxData;
 
             formData.hotel = {"id": parseInt(formData.hotel)};
 

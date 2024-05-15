@@ -8,6 +8,8 @@ import com.bryanmzili.QuartoIdeal.service.ReservaService;
 import com.bryanmzili.QuartoIdeal.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,12 +33,6 @@ public class ReservaController {
     @Autowired
     UsuarioService usuarioService;
 
-    @GetMapping("/listar")
-    public ResponseEntity<List> getAllReservas() {
-        List<ReservaEntity> reservas = reservaService.listarTodasReservas();
-        return new ResponseEntity<>(reservas, HttpStatus.OK);
-    }
-
     @PostMapping("/addCarrinho")
     public ResponseEntity<String> addReservaCarrinho(@RequestBody ReservaEntity reserva, HttpServletRequest request) {
 
@@ -47,8 +43,12 @@ public class ReservaController {
             reserva.setCliente(usuario);
             reserva.setCarrinho(true);
 
-            reservaService.criarReserva(reserva);
-            return new ResponseEntity<>("Adicionado ao Carrinho", HttpStatus.OK);
+            if (verificarDatas(reserva)) {
+                reservaService.criarReserva(reserva);
+                return new ResponseEntity<>("Adicionado ao Carrinho", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Alguma das datas é inválida", HttpStatus.OK);
+            }
         }
         return new ResponseEntity<>("Adicionar Carrinho localStorage", HttpStatus.OK);
     }
@@ -86,11 +86,11 @@ public class ReservaController {
         if (cartao.getMetodo().equals("CARTAO") || cartao.getMetodo().equals("PIX")) {
             List<ReservaEntity> reservas = lerSessaoPagamento(request);
             if (reservas != null) {
-                for(ReservaEntity reserva: reservas){
+                for (ReservaEntity reserva : reservas) {
                     reserva.setCarrinho(false);
                     reservaService.criarReserva(reserva);
                 }
-                
+
                 HttpSession ses = request.getSession();
                 ses.setAttribute("pagamento", null);
                 ses.setAttribute("pagamentoEfetuado", true);
@@ -119,6 +119,26 @@ public class ReservaController {
         }
 
         return sesProp;
+    }
+
+    public boolean verificarDatas(ReservaEntity reserva) {
+        Date data_entrada = reserva.getData_entrada();
+        Date data_saida = reserva.getData_saida();
+
+        LocalDate hoje = LocalDate.now();
+
+        LocalDate dataEntradaLocal = data_entrada.toLocalDate();
+        LocalDate dataSaidaLocal = data_saida.toLocalDate();
+        
+        if (dataEntradaLocal.isBefore(hoje)) {
+            return false;
+        }
+
+        if (!dataSaidaLocal.isAfter(dataEntradaLocal)) {
+            return false;
+        }
+
+        return true;
     }
 
 }

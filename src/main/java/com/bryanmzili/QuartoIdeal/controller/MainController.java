@@ -12,6 +12,8 @@ import com.bryanmzili.QuartoIdeal.service.ReservaService;
 import com.bryanmzili.QuartoIdeal.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -140,13 +142,16 @@ public class MainController {
             reserva.setCliente(usuario);
             reserva.setCarrinho(false);
 
-            List<ReservaEntity> reservas = new ArrayList();
-            reservas.add(reserva);
+            if (verificarDatas(reserva)) {
+                List<ReservaEntity> reservas = new ArrayList();
+                reservas.add(reserva);
 
-            HttpSession ses = request.getSession();
-            ses.setAttribute("pagamento", reservas);
+                HttpSession ses = request.getSession();
+                ses.setAttribute("pagamento", reservas);
+                return new ResponseEntity<>("Redirecionar Tela Pagamento", HttpStatus.OK);
+            }
 
-            return new ResponseEntity<>("Redirecionar Tela Pagamento", HttpStatus.OK);
+            return new ResponseEntity<>("Alguma das datas é inválida", HttpStatus.OK);
         }
         return new ResponseEntity<>("Usuário não encontrado", HttpStatus.OK);
     }
@@ -201,7 +206,7 @@ public class MainController {
         }
         return "";
     }
-    
+
     @GetMapping("/QuartoIdeal/pages/pagina-nao-encontrada")
     public String erro(Model model, HttpServletRequest request) {
         return "notFound";
@@ -235,5 +240,25 @@ public class MainController {
         }
 
         return sesProp;
+    }
+    
+    public boolean verificarDatas(ReservaEntity reserva) {
+        Date data_entrada = reserva.getData_entrada();
+        Date data_saida = reserva.getData_saida();
+
+        LocalDate hoje = LocalDate.now();
+
+        LocalDate dataEntradaLocal = data_entrada.toLocalDate();
+        LocalDate dataSaidaLocal = data_saida.toLocalDate();
+
+        if (dataEntradaLocal.isBefore(hoje)) {
+            return false;
+        }
+
+        if (!dataSaidaLocal.isAfter(dataEntradaLocal)) {
+            return false;
+        }
+
+        return true;
     }
 }
