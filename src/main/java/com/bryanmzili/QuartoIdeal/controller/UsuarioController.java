@@ -6,13 +6,10 @@ import com.bryanmzili.QuartoIdeal.model.Usuario;
 import com.bryanmzili.QuartoIdeal.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,20 +22,6 @@ public class UsuarioController {
 
     @Autowired
     UsuarioService usuarioService;
-
-    //Apenas com permissão admin
-    @GetMapping("/listar")
-    public ResponseEntity<List> getAllUsuario() {
-        List<UsuarioEntity> usuarios = usuarioService.listarTodosUsuarios();
-        return new ResponseEntity<>(usuarios, HttpStatus.OK);
-    }
-
-    //Apenas com permissão admin
-    @GetMapping("/buscar/{id}")
-    public ResponseEntity<UsuarioEntity> getUsuarioById(@PathVariable Integer id) {
-        UsuarioEntity usuario = usuarioService.listarUsuarioById(id);
-        return new ResponseEntity<>(usuario, HttpStatus.OK);
-    }
 
     @PostMapping("/logar")
     public ResponseEntity<String> getUsuarioByUserAndPass(@RequestBody Usuario usuario, HttpServletRequest request) {
