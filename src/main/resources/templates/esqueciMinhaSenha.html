@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/styles/login.css}">
+    <link rel="stylesheet" th:href="@{/styles/openMessage.css}">
+    <Script th:src="@{/scripts/esqueciMinhaSenha.js}" defer></Script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+    <Script th:src="@{/scripts/openMessage.js}"></Script>
+    <meta name="author" content="Bryan Lemes">
+    <link rel="shortcut icon" th:href="@{/icones/favicon.ico}" type="image/x-icon">
+    <title>Esqueci Minha Senha</title>
+</head>
+
+<body>
+    <p class="poppins" id="subtitle">Preencha os campos para<br>alterar sua Senha</p>
+
+    <form action="" th:object="${cpf}" method="POST">
+        <div id="fields">
+            <input type="text" th:field="*{cpf}" id="cpf" class="campos inter" minlength="14" placeholder="xxx.xxx.xxx-xx" required>
+            <input type="password" th:field="*{senha1}" id="senha1" class="campos inter" minlength="8" placeholder="Senha">
+            <input type="password" th:field="*{senha2}" id="senha2" class="campos inter" minlength="8" placeholder="Confirmar Senha">
+        </div>
+        
+        <p id="senhasDiferentes" class="poppins">As senhas não coincidem</p>
+    
+        <div id="buttons">
+            <button class="poppins button-styled" type="button" id="voltar" onclick="{location.href = 'login'}">VOLTAR</button>
+            <button class="poppins button-styled" type="submit" id="login">Verificar</button>
+        </div>
+    </form>
+
+</body>
+
+</html>

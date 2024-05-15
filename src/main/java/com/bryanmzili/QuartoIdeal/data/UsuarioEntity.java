@@ -1,5 +1,6 @@
 package com.bryanmzili.QuartoIdeal.data;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,10 +9,10 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import java.util.Date;
 import lombok.Data;
-import org.hibernate.validator.constraints.br.CPF;
 
 @Data
 @Entity
@@ -23,11 +24,9 @@ public class UsuarioEntity {
     private Integer id;
 
     @NotNull(message = "Nome é obrigatório")
-    @Size(min = 2, message = "O nome deve ter no mínimo 2 caracteres")
     private String nome;
 
     @NotNull(message = "Usuário é obrigatório")
-    @Size(min = 2, message = "O usuário deve ter no mínimo 2 caracteres")
     private String usuario;
 
     @NotNull(message = "Senha é obrigatório")
@@ -35,14 +34,14 @@ public class UsuarioEntity {
     private String senha;
 
     @NotBlank(message = "Contato é obrigatório")
-    @Size(min = 10, max = 11, message = "Contato inválido")
+    @Size(min = 14, max = 15, message = "Contato inválido")
     private String contato;
 
     @NotBlank(message = "Endereço é obrigatório")
     private String endereco;
 
     @NotNull(message = "CPF é obrigatório")
-    @CPF(message = "CPF inválido")
+    @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}", message = "CPF inválido")
     private String cpf;
 
     @NotNull(message = "Email é obrigatório")
@@ -50,6 +49,7 @@ public class UsuarioEntity {
     private String email;
 
     @NotNull(message = "Data de Nascimento é obrigatório")
+    @Column(name = "data_nascimento")
     private Date dataNascimento;
 
 }

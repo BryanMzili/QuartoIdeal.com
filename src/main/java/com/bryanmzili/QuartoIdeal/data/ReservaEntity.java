@@ -29,10 +29,13 @@ public class ReservaEntity {
     @JoinColumn(name = "id_hotel")
     @NotNull(message = "Hotel é obrigatório")
     private HotelEntity hotel;
+    
+    @JoinColumn(name = "carrinho")
+    private boolean carrinho = false;
 
     @NotNull(message = "Data de entrada é obrigatória")
     private Date data_entrada;
-    
+
     @NotNull(message = "Data de saída é obrigatória")
     private Date data_saida;
 }

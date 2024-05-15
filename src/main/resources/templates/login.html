@@ -4,23 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../styles/login.css">
-    <link rel="stylesheet" href="../../styles/openMessage.css">
-    <Script src="../../scripts/login.js" defer></Script>
+    <link rel="stylesheet" th:href="@{/styles/login.css}">
+    <link rel="stylesheet" th:href="@{/styles/openMessage.css}">
+    <Script th:src="@{/scripts/login.js}" defer></Script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <Script src="../../scripts/openMessage.js"></Script>
+    <Script th:src="@{/scripts/openMessage.js}"></Script>
     <meta name="author" content="Bryan Lemes">
-    <link rel="shortcut icon" href="../../icones/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{/icones/favicon.ico}" type="image/x-icon">
     <title>Login</title>
 </head>
 
 <body>
     <p class="poppins" id="subtitle">Preencha os campos para<br>acessar sua conta</p>
 
-    <form action="">
+    <form action="" th:object="${usuario}" method="POST">
         <div id="fields">
-            <input type="text" name="usuario" id="usuario" class="campos inter" placeholder="Usuário" required>
-            <input type="password" name="senha" id="senha" class="campos inter" placeholder="Senha" required>
+            <input type="text" th:field="*{usuario}" id="usuario" class="campos inter" placeholder="Usuário" required >
+            <input type="password" th:field="*{senha}" id="senha" class="campos inter" placeholder="Senha" required >
         </div>
     
         <div id="buttons">
@@ -29,7 +29,7 @@
         </div>
     </form>
 
-    <p id="create-login" class="poppins" onclick="{window.location.href='cadastro'}">Não possui um login? Cadastre-se</p>
+    <p id="create-login" class="poppins" onclick="{location.href='cadastro'}">Não possui um login? Cadastre-se</p>
     <p id="forgot-password" class="poppins">Esqueci minha senha</p>
 
 </body>

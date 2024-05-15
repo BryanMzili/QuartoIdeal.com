@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../styles/pagamento.css">
-    <link rel="stylesheet" href="../../styles/fa-registered.css">
-    <script src="../../scripts/pagamentoEfetuado.js" defer></script>
+    <link rel="stylesheet" th:href="@{/styles/pagamento.css}">
+    <link rel="stylesheet" th:href="@{/styles/fa-registered.css}">
+    <script th:src="@{/scripts/pagamentoEfetuado.js}" defer></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <meta name="author" content="Bryan Lemes">
-    <link rel="shortcut icon" href="../../icones/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{/icones/favicon.ico}" type="image/x-icon">
     <title>Pagamento Efetuado</title>
     <style defer>
         header {

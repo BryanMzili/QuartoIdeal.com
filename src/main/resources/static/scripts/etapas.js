@@ -62,9 +62,8 @@ function etapa_4() {
         field_2.addEventListener('input', removeMsg);
         field_2.focus();
     } else if (!bool1 && bool2 == 1) {
-        chave.usuario = field_1.value;
-        chave.senha = field_2.value;
-        openMessage('Cadastro finalizado!!!<br><br>Você será redirecionado para a tela de Login');
+        pessoa.usuario = field_1.value;
+        pessoa.senha = field_2.value;
         cadastrar();
     }
 }

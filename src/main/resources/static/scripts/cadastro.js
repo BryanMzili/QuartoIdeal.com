@@ -1,15 +1,13 @@
-var field_1 = document.querySelector("#field_1");
-var field_2 = document.querySelector("#field_2");
-var msg_field1 = document.querySelector("#msg_field1");
-var msg_field2 = document.querySelector("#msg_field2");
-var iconView = document.querySelector("#iconView");
-var btn_cadastrar = document.querySelector("#cadastrar");
-var etapa = document.querySelector('#state');
-let larguraInicial = $(window).width();
-var aux = 0;
+let field_1 = document.querySelector("#field_1");
+let field_2 = document.querySelector("#field_2");
+let msg_field1 = document.querySelector("#msg_field1");
+let msg_field2 = document.querySelector("#msg_field2");
+let iconView = document.querySelector("#iconView");
+let btn_cadastrar = document.querySelector("#cadastrar");
+let etapa = document.querySelector('#state');
+let aux = 0;
 
 const pessoa = {};
-const chave = {};
 
 if (window.innerWidth < 1280) {
     $('#vc-possui').html('Você já possui um cadastro?');
@@ -21,12 +19,8 @@ if (window.innerWidth < 1280) {
 }
 
 $(window).on('resize', function () {
-    let larguraAtual = $(window).width();
-    if (larguraAtual !== larguraInicial) {
-        location.reload();
-    }
+    location.reload();
 });
-
 
 field_1.addEventListener('keydown', next);
 field_2.addEventListener('keydown', next);
@@ -35,7 +29,9 @@ attState();
 definirEtapa();
 
 function voltar() {
-    if (aux > 0) {
+    if (aux <= 0) {
+        location.href = "/QuartoIdeal";
+    } else if (aux > 0) {
         salvarPrevia();
         limparCampos();
         aux--;
@@ -52,11 +48,38 @@ function voltar() {
 }
 
 function cadastrar() {
-    localStorage.setItem(JSON.stringify(chave), JSON.stringify(pessoa));
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8080/usuario/cadastrar',
+        data: JSON.stringify(pessoa),
+        contentType: 'application/json',
+        success: function (response) {
+            console.log(response);
+            if (response == 'Usuário criado com sucesso') {
+                openMessage('Cadastro finalizado!!!<br><br>Você será redirecionado para a tela de Login');
+            } else {
+                openMessage(response);
+                switch (response) {
+                    case "CPF inválido":
+                        voltar();
+                        voltar();
+                        voltar();
+                        break;
+                    case "Contato inválido":
+                    case "Email inválido":
+                        voltar();
+                        break;
+                }
+            }
+        },
+        error: function () {
+            console.error('Erro ao adicionar ao carrinho');
+        }
+    });
 }
 
 function Login() {
-    window.location.href = "login";
+    location.href = "login";
 }
 
 function attState() {

@@ -1,27 +1,7 @@
 document.querySelector('#registered').innerHTML = 'QUARTO IDEAL ' + new Date().getFullYear();
 let segundos = 3;
 
-criarReservas();
-let reservas = JSON.parse(localStorage.getItem('reservas'));
-let compra = JSON.parse(localStorage.getItem('finalizar-compra')).carrinho;
-
-$.each(compra, function (key, value) {
-    reservas.reservas.push(value);
-});
-
-salvarCarrinho(reservas)
-
-localStorage.setItem('finalizar-compra', '{"carrinho":[]}');
-
-function criarReservas() {
-    if (localStorage.getItem('reservas') == null) {
-        localStorage.setItem('reservas', '{"reservas":[]}');
-    }
-}
-
-function salvarCarrinho(reservas) {
-    localStorage.setItem('reservas', JSON.stringify(reservas));
-}
+iniciarContador(); 
 
 function iniciarContador() {
     if (segundos >= 0) {
@@ -32,5 +12,3 @@ function iniciarContador() {
         window.location.href = '/QuartoIdeal/';
     }
 }
-
-iniciarContador(); 

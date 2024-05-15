@@ -31,16 +31,24 @@ function openMessage(text) {
 
     let count = text.length;
 
-    if (count == 196 || count == 52 || count == 33) {
+    if (count == 196 || count == 52 || count == 33 || count == 26 || count == 20 || count == 22 || count == 48 || count == 58 || count == 12 ||
+            count == 16 || count == 14 || count == 24) {
         close.addEventListener('click', fechar);
         close.addEventListener('keydown', fechar);
-    } else if (count == 74) {
+    } else if (count == 74 || count == 28) {
         close.addEventListener('click', login);
         close.addEventListener('keydown', login);
-    }else if(count == 27){
+    } else if (count == 27) {
         close.addEventListener('click', telaCadastro);
         close.addEventListener('keydown', telaCadastro);
+    } else if (count == 30) {
+        close.addEventListener('click', reload);
+        close.addEventListener('keydown', reload);
     }
+}
+
+function reload() {
+    location.reload();
 }
 
 function fechar(event) {

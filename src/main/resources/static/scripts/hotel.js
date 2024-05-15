@@ -1,8 +1,4 @@
 document.querySelector('#registered').innerHTML = 'QUARTO IDEAL ' + new Date().getFullYear();
-let larguraInicial = $(window).width();
-
-const urlParams = new URLSearchParams(window.location.search);
-let id_hotel = urlParams.get('id');
 
 let dataAtual = new Date();
 $('#data_entrada').attr('min', dataAtual.toISOString().split('T')[0]);
@@ -29,7 +25,7 @@ document.querySelector('#data_entrada').addEventListener('change', function () {
 });
 
 function abrirCarrinho() {
-    window.location.href = 'carrinho';
+    window.location.href = '../carrinho';
 }
 
 $('form').submit(function (event) {
@@ -44,16 +40,40 @@ function addCarrinho() {
 
     if (!$('#data_saida').prop('disabled')) {
         if (entrada && saida) {
-            let carrinho = JSON.parse(localStorage.getItem('carrinho'));
-            let hotel = {};
-            hotel.id_hotel = id_hotel;
-            hotel['data-entrada'] = $('#data_entrada').val();
-            hotel['data-saida'] = $('#data_saida').val();
 
-            carrinho.carrinho.push(hotel);
-            salvarCarrinho(carrinho);
+            let formData = {};
+            let formArray = $('form').serializeArray();
+            $.each(formArray, function (i, field) {
+                formData[field.name] = field.value;
+            });
 
-            window.location.reload();
+            formData.hotel = {"id": parseInt(formData.hotel)};
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8080/reservas/addCarrinho',
+                data: JSON.stringify(formData),
+                contentType: 'application/json',
+                success: function (response) {
+                    if (response == 'Adicionado ao Carrinho') {
+                        openMessage('Reserva adicionada ao Carrinho');
+                    } else if (response == 'Adicionar Carrinho localStorage') {
+                        let carrinho = JSON.parse(localStorage.getItem('carrinho'));
+                        let hotel = {};
+                        hotel.id_hotel = parseInt($('input[type="hidden"]').val());
+                        hotel['data-entrada'] = $('#data_entrada').val();
+                        hotel['data-saida'] = $('#data_saida').val();
+
+                        carrinho.carrinho.push(hotel);
+                        salvarCarrinho(carrinho);
+
+                        openMessage('Reserva adicionada ao Carrinho');
+                    }
+                },
+                error: function () {
+                    console.error('Erro ao adicionar ao carrinho');
+                }
+            });
         }
     }
 }
@@ -64,21 +84,38 @@ function reservarHotel() {
 
     if (!$('#data_saida').prop('disabled')) {
         if (entrada && saida) {
-            let hotel = {};
-            hotel.id_hotel = id_hotel;
-            hotel['data-entrada'] = $('#data_entrada').val();
-            hotel['data-saida'] = $('#data_saida').val();
 
-            $('#data_entrada').val('');
+            let formData = {};
+            let formArray = $('form').serializeArray();
+            $.each(formArray, function (i, field) {
+                formData[field.name] = field.value;
+            });
 
-            localStorage.setItem('finalizar-compra', '{"carrinho":[' + JSON.stringify(hotel) + ']}');
-            window.location.href = './pagamento';
+            formData.hotel = {"id": parseInt(formData.hotel)};
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8080/QuartoIdeal/pages/pagamento',
+                data: JSON.stringify(formData),
+                contentType: 'application/json',
+                success: function (response) {
+
+                    if (response == "Usuário não encontrado") {
+                        openMessage("Você deve efetuar login para efetuar uma reserva");
+                    } else if (response == "Redirecionar Tela Pagamento") {
+                        location.href = "../pagamento"
+                    }
+                },
+                error: function () {
+                    console.error('Erro ao efetuar Reserva');
+                }
+            });
         }
     }
 }
 
 function criarCarrinho() {
-    if (localStorage.getItem('carrinho') == null) {
+    if (localStorage.getItem('carrinho') == null || localStorage.getItem('carrinho') == "") {
         localStorage.setItem('carrinho', '{"carrinho":[]}');
     }
 }
@@ -88,10 +125,7 @@ function salvarCarrinho(carrinho) {
 }
 
 $(window).on('resize', function () {
-    let larguraAtual = $(window).width();
-    if (larguraAtual !== larguraInicial) {
-        location.reload();
-    }
+    location.reload();
 });
 
 if (window.innerWidth < 1280) {
@@ -109,44 +143,22 @@ if (window.innerWidth < 1280) {
     $('.datas').append(data_entrada);
     $('.datas').append(lbl_saida);
     $('.datas').append(data_saida);
+
+    let title = $('#title').html();
+    $('#title').html('');
+    $('#title_mobile').html(title);
 }
 
 $('.bi').click(abrirLateral);
 
-$.getJSON('../../hoteis.json', function (data) {
-    $.each(data, function (key, value) {
-        $.each(value, function (chave, valor) {
+compareAndAct();
 
-            if (id_hotel == valor.id) {
-                $('#title').html(valor.nome);
-                $('#hotel-image').attr('src', '../../images/' + valor.imagem);
-                $('#avaliacao').html(valor.nota);
-                let nota = " - ";
-                if (valor.nota <= 2.9) {
-                    nota += 'Muito Ruim'
-                } else if (valor.nota <= 5.9) {
-                    nota += 'Ruim'
-                } else if (valor.nota <= 7.9) {
-                    nota += 'Bom'
-                } else if (valor.nota <= 8.9) {
-                    nota += 'Muito Bom'
-                } else if (valor.nota >= 9.0) {
-                    nota += 'Excelente'
-                }
-                $('#avaliacao').append(nota);
-                $('#avaliacao').append("(" + valor.numAval + ")");
+function compareAndAct() {
+    let pageSize = $('body').height();
+    let screenHeight = $(window).height();
 
-                $('#localidade').html(valor.regiao);
-                $('#valor').html("R$ " + valor.valor.toFixed(2).replace('.', ',') + " p/d");
-            }
-        });
-    });
-    if (window.innerWidth < 1280) {
-        let title = $('#title').html();
-        $('#title').html('');
-        $('#title_mobile').html(title);
+    if (pageSize < screenHeight) {
+        $('footer').css('position', 'absolute');
+        $('footer').css('bottom', '0%');
     }
-
-}).fail(function () {
-    console.log('Erro ao carregar o arquivo JSON.');
-});
+}

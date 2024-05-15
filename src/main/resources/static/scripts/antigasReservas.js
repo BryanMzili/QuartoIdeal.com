@@ -1,30 +1,19 @@
 document.querySelector('#registered').innerHTML = 'QUARTO IDEAL ' + new Date().getFullYear();
-let larguraInicial = $(window).width();
-let hoteis;
 
+$(".reservas").hide();
 responsividade();
-
-try {
-    $.getJSON('../../hoteis.json', function (data) {
-        hoteis = data;
-        let reservas = JSON.parse(localStorage.getItem('reservas'));
-        listarReservas(reservas.reservas, hoteis);
-        responsividade();
-    }).fail(function () {
-        console.log('Erro ao carregar o arquivo JSON.');
-    });
-
-} catch (e) { }
 
 function abrirCarrinho() {
     window.location.href = 'carrinho';
 }
 
+if($('.reserva').html() != undefined){
+    $('#naoLogado').hide();
+    $(".reservas").show();
+}
+
 $(window).on('resize', function () {
-    let larguraAtual = $(window).width();
-    if (larguraAtual !== larguraInicial) {
-        location.reload();
-    }
+    location.reload();
 });
 
 function responsividade() {
@@ -55,33 +44,15 @@ function responsividade() {
     $('.bi').click(abrirLateral);
 }
 
-function formatarData(data) {
-    let partes = data.split('-');
-    return partes[2] + '/' + partes[1] + '/' + partes[0];
-}
+$('.bi').click(abrirLateral);
+compareAndAct();
 
-function listarReservas(reservas, hoteis) {
-    $.each(reservas, function (chave, valor) {
-        let hotel = $.grep(hoteis.hoteis, function (objeto) {
-            return objeto.id == valor.id_hotel;
-        })[0];
+function compareAndAct() {
+    let pageSize = $('body').height();
+    let screenHeight = $(window).height();
 
-        let reserva = '<div class="reserva">' +
-            '<p class="reservaTitle inter">' + hotel.nome + '</p>' +
-            '<hr>' +
-            '<div class="infoReserva">' +
-            '<div class="images">' +
-            '<img src="../../images/' + hotel.imagem + '" alt="Foto do hotel" class="image_hotel">' +
-            '</div>' +
-
-            '<div class="infoText">' +
-            '<div class="quebraLinha">' +
-            '<p class="periodo inter">Período:</p>' +
-            '<p class="datasReserva poppins">' + formatarData(valor["data-entrada"]) + ' à ' + formatarData(valor["data-saida"]) + '</p>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>';
-        $('.reservas').append(reserva);
-    });
+    if (pageSize < screenHeight) {
+        $('footer').css('position', 'absolute');
+        $('footer').css('bottom', '0%');
+    }
 }
