@@ -113,7 +113,7 @@ main {
     }
 
     #login_mobile {
-        margin-top: 45%;
+        margin-top: 100px;
         padding-bottom: 20px;
     }
 
@@ -447,12 +447,5 @@ main {
 
     .msg_erro {
         margin-left: 21%;
-    }
-}
-
-@media screen and (min-height: 800px) {
-    #login_mobile {
-        position:absolute;
-        bottom: 0%;
     }
 }

@@ -203,3 +203,15 @@ function salvarPrevia() {
             break;
     }
 }
+
+compareAndAct();
+
+function compareAndAct() {
+    let pageSize = $('body').height();
+    let screenHeight = $(window).height();
+
+    if (pageSize < screenHeight) {
+        $('#login_mobile').css('position', 'absolute');
+        $('#login_mobile').css('bottom', '0%');
+    }
+}
