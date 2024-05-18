@@ -29,6 +29,9 @@ function openMessage(text) {
     close.removeEventListener('click', telaCadastro);
     close.removeEventListener('keydown', telaCadastro);
 
+    close.removeEventListener('click', reload);
+    close.removeEventListener('keydown', reload);
+
     let count = text.length;
 
     if (count == 196 || count == 52 || count == 33 || count == 26 || count == 20 || count == 22 || count == 48 || count == 58 || count == 12 ||

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface ReservaRepository extends JpaRepository<ReservaEntity, Integer> {
 
     List<ReservaEntity> findByClienteAndCarrinho(UsuarioEntity usuario, boolean carrinho);
+    
+    ReservaEntity findByCodigo(int codigo);
 
     void deleteByIdAndClienteAndCarrinho(Integer id, UsuarioEntity usuario, boolean carrinho);
     

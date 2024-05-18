@@ -43,6 +43,18 @@
                                 <p class="datasReserva poppins" th:text="${reserva.data_entrada} + ' à ' + ${reserva.data_saida}"></p>
                             </div>
                         </div>
+                        <div class="codigo">
+                            <p class="poppins">Código de acesso:</p>
+
+                            <div th:if="${reserva.codigo == 0}">
+                                <p class="poppins">Expirado</p>
+                            </div>
+
+                            <div th:unless="${reserva.codigo == 0}">
+                                <p class="poppins" th:text="${reserva.codigo}"></p>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>

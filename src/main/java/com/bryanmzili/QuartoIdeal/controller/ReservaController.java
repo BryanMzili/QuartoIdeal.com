@@ -1,16 +1,19 @@
 package com.bryanmzili.QuartoIdeal.controller;
 
+import com.bryanmzili.QuartoIdeal.EmailService;
 import com.bryanmzili.QuartoIdeal.data.ReservaEntity;
 import com.bryanmzili.QuartoIdeal.data.UsuarioEntity;
 import com.bryanmzili.QuartoIdeal.model.Cartao;
 import com.bryanmzili.QuartoIdeal.model.Usuario;
 import com.bryanmzili.QuartoIdeal.service.ReservaService;
 import com.bryanmzili.QuartoIdeal.service.UsuarioService;
+import com.bryanmzili.QuartoIdeal.validator.Sessoes;
+import com.bryanmzili.QuartoIdeal.validator.Verificacoes;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import java.sql.Date;
-import java.time.LocalDate;
+import java.text.DecimalFormat;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,17 +36,21 @@ public class ReservaController {
     @Autowired
     UsuarioService usuarioService;
 
+    @Autowired
+    EmailService emailService;
+
     @PostMapping("/addCarrinho")
     public ResponseEntity<String> addReservaCarrinho(@RequestBody ReservaEntity reserva, HttpServletRequest request) {
 
-        Usuario sessao = lerSessao(request);
+        Usuario sessao = Sessoes.lerSessao(request);
         if (sessao != null) {
             UsuarioEntity usuario = usuarioService.listarUsuarioByUsuarioAndSenha(sessao);
 
             reserva.setCliente(usuario);
             reserva.setCarrinho(true);
+            reserva.setCodigo(0);
 
-            if (verificarDatas(reserva)) {
+            if (Verificacoes.verificarDatas(reserva)) {
                 reservaService.criarReserva(reserva);
                 return new ResponseEntity<>("Adicionado ao Carrinho", HttpStatus.OK);
             } else {
@@ -56,7 +63,7 @@ public class ReservaController {
     @GetMapping("/removerCarrinho/{id}")
     public ResponseEntity<String> removerReservaCarrinho(@PathVariable Integer id, HttpServletRequest request) {
 
-        Usuario sessao = lerSessao(request);
+        Usuario sessao = Sessoes.lerSessao(request);
         if (sessao != null) {
             UsuarioEntity usuario = usuarioService.listarUsuarioByUsuarioAndSenha(sessao);
 
@@ -70,7 +77,7 @@ public class ReservaController {
     @GetMapping("/limparCarrinho")
     public ResponseEntity<String> limparCarrinho(HttpServletRequest request) {
 
-        Usuario sessao = lerSessao(request);
+        Usuario sessao = Sessoes.lerSessao(request);
         if (sessao != null) {
             UsuarioEntity usuario = usuarioService.listarUsuarioByUsuarioAndSenha(sessao);
 
@@ -84,61 +91,58 @@ public class ReservaController {
     @PostMapping("/finalizarReserva")
     public ResponseEntity<String> finalizarReserva(HttpServletRequest request, @RequestBody Cartao cartao) {
         if (cartao.getMetodo().equals("CARTAO") || cartao.getMetodo().equals("PIX")) {
-            List<ReservaEntity> reservas = lerSessaoPagamento(request);
+            List<ReservaEntity> reservas = Sessoes.lerSessaoPagamento(request);
             if (reservas != null) {
-                for (ReservaEntity reserva : reservas) {
-                    reserva.setCarrinho(false);
-                    reservaService.criarReserva(reserva);
-                }
+                try {
+                    String nomeCliente = reservas.get(0).getCliente().getNome();
+                    String mensagem = "Olá " + nomeCliente + ",\n";
+                    String assunto = "";
+                    double valor = 0.0;
 
-                HttpSession ses = request.getSession();
-                ses.setAttribute("pagamento", null);
-                ses.setAttribute("pagamentoEfetuado", true);
-                return new ResponseEntity<>("Pagamento Finalizado", HttpStatus.OK);
+                    if (reservas.size() == 1) {
+                        assunto = "Confirmação de reserva";
+                        mensagem += "Agradecemos por escolher o nosso site para realizar sua reserva de Hotel."
+                                + "Esta é uma confirmação de que sua reserva foi efetuada com sucesso. Abaixo estão os detalhes da sua reserva:\n";
+                    } else {
+                        assunto = "Confirmação de reservas";
+                        mensagem += "Agradecemos por escolher o nosso site para realizar suas reservas de Hotel."
+                                + "Esta é uma confirmação de que suas reservas foram efetuadas com sucesso. Abaixo estão os detalhes das suas reservas:\n";
+                    }
+                    for (ReservaEntity reserva : reservas) {
+                        reserva.setCarrinho(false);
+                        reserva.setCodigo(Verificacoes.calcularCodigo(reservaService));
+                        reservaService.criarReserva(reserva);
+
+                        long diferencaMillis = Math.abs(reserva.getData_saida().getTime() - reserva.getData_entrada().getTime());
+                        long diferencaDias = TimeUnit.DAYS.convert(diferencaMillis, TimeUnit.MILLISECONDS);
+
+                        valor += diferencaDias * reserva.getHotel().getValor();
+
+                        String nomeHotel = reserva.getHotel().getNome();
+
+                        mensagem += nomeHotel + " - Data Entrada: " + Verificacoes.converterData(reserva.getData_entrada())
+                                + ", Data Entrada: " + Verificacoes.converterData(reserva.getData_saida())
+                                + ", Código de Acesso: " + reserva.getCodigo() + "\n";
+                    }
+
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    mensagem += "Total do Pedido: R$ " + df.format(valor);
+
+                    HttpSession ses = request.getSession();
+                    ses.setAttribute("pagamento", null);
+                    ses.setAttribute("pagamentoEfetuado", true);
+
+                    String destinatario = reservas.get(0).getCliente().getEmail();
+
+                    emailService.sendSimpleMessage(destinatario, assunto, mensagem);
+                    return new ResponseEntity<>("Pagamento Finalizado", HttpStatus.OK);
+                } catch (Exception e) {
+                    System.out.println("Erro: " + e.getMessage());
+                }
             }
         }
 
         return new ResponseEntity<>("Erro ao efetuar pagamento", HttpStatus.OK);
-    }
-
-    public Usuario lerSessao(HttpServletRequest request) {
-        HttpSession ses = request.getSession();
-        Usuario sesProp = null;
-        if (ses != null && ses.getAttribute("usuario") != null) {
-            sesProp = (Usuario) ses.getAttribute("usuario");
-        }
-
-        return sesProp;
-    }
-
-    public List<ReservaEntity> lerSessaoPagamento(HttpServletRequest request) {
-        HttpSession ses = request.getSession();
-        List<ReservaEntity> sesProp = null;
-        if (ses != null && ses.getAttribute("pagamento") != null) {
-            sesProp = (List<ReservaEntity>) ses.getAttribute("pagamento");
-        }
-
-        return sesProp;
-    }
-
-    public boolean verificarDatas(ReservaEntity reserva) {
-        Date data_entrada = reserva.getData_entrada();
-        Date data_saida = reserva.getData_saida();
-
-        LocalDate hoje = LocalDate.now();
-
-        LocalDate dataEntradaLocal = data_entrada.toLocalDate();
-        LocalDate dataSaidaLocal = data_saida.toLocalDate();
-        
-        if (dataEntradaLocal.isBefore(hoje)) {
-            return false;
-        }
-
-        if (!dataSaidaLocal.isAfter(dataEntradaLocal)) {
-            return false;
-        }
-
-        return true;
     }
 
 }

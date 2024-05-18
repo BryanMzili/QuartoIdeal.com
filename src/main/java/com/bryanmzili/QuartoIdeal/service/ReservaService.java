@@ -29,6 +29,15 @@ public class ReservaService {
     public List<ReservaEntity> listarReservaByCarrinhoUsuario(UsuarioEntity usuario) {
         return reservaRepository.findByClienteAndCarrinho(usuario, true);
     }
+    
+    public boolean codigoExistente(int codigo){
+        ReservaEntity reserva = reservaRepository.findByCodigo(codigo);
+        
+        if(reserva != null){
+            return true;
+        }
+        return false;
+    }
 
     @Transactional
     public boolean removerReservaByCarrinhoUsuario(Integer id, UsuarioEntity usuario) {

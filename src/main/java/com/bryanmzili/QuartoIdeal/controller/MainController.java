@@ -10,10 +10,10 @@ import com.bryanmzili.QuartoIdeal.model.Usuario;
 import com.bryanmzili.QuartoIdeal.service.HotelService;
 import com.bryanmzili.QuartoIdeal.service.ReservaService;
 import com.bryanmzili.QuartoIdeal.service.UsuarioService;
+import com.bryanmzili.QuartoIdeal.validator.Sessoes;
+import com.bryanmzili.QuartoIdeal.validator.Verificacoes;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -61,7 +61,7 @@ public class MainController {
 
     @GetMapping("/QuartoIdeal/pages/antigasReservas")
     public String antigasReservas(Model model, HttpServletRequest request) {
-        Usuario sessao = lerSessao(request);
+        Usuario sessao = Sessoes.lerSessao(request);
         if (sessao != null) {
             UsuarioEntity usuario = usuarioService.listarUsuarioByUsuarioAndSenha(sessao);
             if (usuario != null) {
@@ -84,7 +84,7 @@ public class MainController {
     @GetMapping("/QuartoIdeal/pages/carrinho")
     public String carrinho(Model model, HttpServletRequest request) {
 
-        Usuario sessao = lerSessao(request);
+        Usuario sessao = Sessoes.lerSessao(request);
         if (sessao != null) {
             UsuarioEntity usuario = usuarioService.listarUsuarioByUsuarioAndSenha(sessao);
 
@@ -135,14 +135,15 @@ public class MainController {
     @PostMapping("/QuartoIdeal/pages/pagamento")
     public ResponseEntity<String> pagamentoReserva(Model model, @RequestBody ReservaEntity reserva, HttpServletRequest request) {
 
-        Usuario sessao = lerSessao(request);
+        Usuario sessao = Sessoes.lerSessao(request);
         if (sessao != null) {
             UsuarioEntity usuario = usuarioService.listarUsuarioByUsuarioAndSenha(sessao);
 
             reserva.setCliente(usuario);
             reserva.setCarrinho(false);
+            reserva.setCodigo(0);
 
-            if (verificarDatas(reserva)) {
+            if (Verificacoes.verificarDatas(reserva)) {
                 List<ReservaEntity> reservas = new ArrayList();
                 reservas.add(reserva);
 
@@ -160,7 +161,7 @@ public class MainController {
     @PostMapping("/QuartoIdeal/pages/pagamentoCarrinho")
     public ResponseEntity<String> pagamentoCarrinho(Model model, HttpServletRequest request) {
 
-        Usuario sessao = lerSessao(request);
+        Usuario sessao = Sessoes.lerSessao(request);
         if (sessao != null) {
             UsuarioEntity usuario = usuarioService.listarUsuarioByUsuarioAndSenha(sessao);
 
@@ -178,7 +179,7 @@ public class MainController {
     @GetMapping("/QuartoIdeal/pages/pagamento")
     public String pagamentoReserva(Model model, HttpServletRequest request, @ModelAttribute Cartao cartao) {
 
-        List<ReservaEntity> reservas = lerSessaoPagamento(request);
+        List<ReservaEntity> reservas = Sessoes.lerSessaoPagamento(request);
         if (reservas != null) {
             double valor = 0.0;
             for (ReservaEntity reserva : reservas) {
@@ -199,7 +200,7 @@ public class MainController {
 
     @GetMapping("/QuartoIdeal/pages/pagamentoEfetuado")
     public String pagamentoEfetuado(Model model, HttpServletRequest request) {
-        if (lerSessaoPagamentoEfetuado(request)) {
+        if (Sessoes.lerSessaoPagamentoEfetuado(request)) {
             HttpSession ses = request.getSession();
             ses.setAttribute("pagamentoEfetuado", false);
             return "pagamentoEfetuado";
@@ -211,54 +212,5 @@ public class MainController {
     public String erro(Model model, HttpServletRequest request) {
         return "notFound";
     }
-
-    public Usuario lerSessao(HttpServletRequest request) {
-        HttpSession ses = request.getSession();
-        Usuario sesProp = null;
-        if (ses != null && ses.getAttribute("usuario") != null) {
-            sesProp = (Usuario) ses.getAttribute("usuario");
-        }
-
-        return sesProp;
-    }
-
-    public List<ReservaEntity> lerSessaoPagamento(HttpServletRequest request) {
-        HttpSession ses = request.getSession();
-        List<ReservaEntity> sesProp = null;
-        if (ses != null && ses.getAttribute("pagamento") != null) {
-            sesProp = (List<ReservaEntity>) ses.getAttribute("pagamento");
-        }
-
-        return sesProp;
-    }
-
-    public boolean lerSessaoPagamentoEfetuado(HttpServletRequest request) {
-        HttpSession ses = request.getSession();
-        boolean sesProp = false;
-        if (ses != null && ses.getAttribute("pagamentoEfetuado") != null) {
-            sesProp = (boolean) ses.getAttribute("pagamentoEfetuado");
-        }
-
-        return sesProp;
-    }
     
-    public boolean verificarDatas(ReservaEntity reserva) {
-        Date data_entrada = reserva.getData_entrada();
-        Date data_saida = reserva.getData_saida();
-
-        LocalDate hoje = LocalDate.now();
-
-        LocalDate dataEntradaLocal = data_entrada.toLocalDate();
-        LocalDate dataSaidaLocal = data_saida.toLocalDate();
-
-        if (dataEntradaLocal.isBefore(hoje)) {
-            return false;
-        }
-
-        if (!dataSaidaLocal.isAfter(dataEntradaLocal)) {
-            return false;
-        }
-
-        return true;
-    }
 }

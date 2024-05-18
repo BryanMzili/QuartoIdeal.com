@@ -17,6 +17,8 @@ public class ReservaCalculada {
 
     private double valor;
     
+    private int codigo;
+    
     public ReservaCalculada() {
     }
 
@@ -28,6 +30,7 @@ public class ReservaCalculada {
         this.hotel = reserva.getHotel();
         this.data_entrada = sdf.format(reserva.getData_entrada());
         this.data_saida = sdf.format(reserva.getData_saida());
+        this.codigo = reserva.getCodigo();
     }
     
     public ReservaCalculada(ReservaEntity reserva, double valor) {
@@ -38,6 +41,7 @@ public class ReservaCalculada {
         this.hotel = reserva.getHotel();
         this.data_entrada = sdf.format(reserva.getData_entrada());
         this.data_saida = sdf.format(reserva.getData_saida());
+        this.codigo = reserva.getCodigo();
         this.valor = valor;
     }
 
@@ -87,5 +91,13 @@ public class ReservaCalculada {
 
     public void setValor(double valor) {
         this.valor = valor;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 }

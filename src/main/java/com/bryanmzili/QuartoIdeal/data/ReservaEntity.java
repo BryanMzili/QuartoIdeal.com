@@ -38,4 +38,6 @@ public class ReservaEntity {
 
     @NotNull(message = "Data de saída é obrigatória")
     private Date data_saida;
+    
+    private int codigo = 0;
 }

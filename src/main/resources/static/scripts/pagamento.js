@@ -90,17 +90,17 @@ function pagamentoEfetuado(metodo) {
 
     formData.metodo = metodo;
 
-    console.log(formData);
     $.ajax({
         type: 'POST',
         url: 'http://localhost:8080/reservas/finalizarReserva',
         data: JSON.stringify(formData),
         contentType: 'application/json',
+        async: false,
         success: function (response) {
-            console.log(response);
             if (response == "" || response == "Erro ao efetuar pagamento") {
                 openMessage('Falha ao Efetuar pagamento');
             } else if (response == "Pagamento Finalizado") {
+                alert("Pagamento Finalizado, enviamos a confirmação do pedido ao seu e-mail.");
                 location.href = "pagamentoEfetuado";
             }
         },
